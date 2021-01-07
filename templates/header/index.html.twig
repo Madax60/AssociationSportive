@@ -1,0 +1,154 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HeaderController!{% endblock %}
+
+{% block body %}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+            font-family: 'IBM Plex Sans', sans-serif;
+        }
+
+        .headerMain {
+            background-color: #1c2c4f;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        .lineBtn {
+            padding: 1% 9%;
+            margin-top: 1%;
+            vertical-align: middle;
+            float: none;
+        }
+
+        header a {
+            transition: all .5s ease;
+            color: #fff;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 1;
+            font-size: 1.5vw;
+            background-color: transparent;
+            padding: 10px;
+            outline: none;
+            border-radius: 2px;
+            text-decoration: none;
+        }
+
+        header a:hover {
+            color: #151616;
+            background-color: rgba(239, 234, 234, 0.4);
+        }
+
+        .settingBtn {
+            padding: 1% 4%;
+            margin-left: 2%;
+        }
+
+        .sideLeft {
+            width: 50%;
+            float: left;
+        }
+
+        .sideRight {
+            margin-left: 85%;
+        }
+
+        .footerMain {
+            background-color: #000000;
+            font-size: 1vw;
+            color: antiquewhite;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding-top: 3%;
+        }
+
+        footer ul {
+            list-style-type: none;
+        }
+
+        .titreFooter {
+            font-weight: bold;
+            font-size: 1.1vw;
+        }
+
+        .infoFooter {
+            color: #808080;
+        }
+
+        .icons-iog {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+    <header>
+        <div class="headerMain">
+            <div class="lineBtn">
+                <div class="sideLeft">
+                    <a class="settingBtn">logo</a>
+                    <a class="settingBtn">ACCUEIL</a>
+                </div>
+                <div class="d-flex flex-row sideRight">
+                    <img class="icons-iog" src="" alt="user icon">
+                    <a class="settingBtn" href="">S'IDENTIFIER</a>
+                </div>
+
+            </div>
+
+        </div>
+    </header>
+
+    <footer>
+        <div class="footerMain">
+            <div class="container">
+                <div class="row">
+                    <!--La classe bg-info ajoute un fond bleu à l'élément-->
+                    <div class="col">
+                        <ul>
+                            <li class="titreFooter">Association Sportive Saint-Vincent</li>
+                            <li><br></li>
+                            <li class="infoFooter">30 rue de Meaux,</li>
+                            <li class="infoFooter">60300 Senlis</li>
+                            <li><br></li>
+                            <li class="infoFooter">Association Saint-Vincent</li>
+                            <li class="infoFooter">hhtps://www.lycee-stvincent.fr/</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="col">
+                        <ul>
+                            <li class="titreFooter">Nous contacter</li>
+                            <li><br></li>
+                            <li class="infoFooter">Tél: 03 66 66 66 66</li>
+                            <li class="infoFooter">Fax: 03 66 66 66 66</li>
+                            <li class="infoFooter">Email: contact@lyceestvincent.fr</li>
+                            <li class="infoFooter">web: https://asso-sport.lyceestvincent.fr</li>
+                        </ul>
+
+                    </div>
+                    <div class="col">
+                        <ul>
+                            <li class="titreFooter">Accès rapide</li>
+                            <li><br></li>
+                            <li class="infoFooter">>Accueil</li>
+                            <li class="infoFooter">>Actualités</li>
+                            <li class="infoFooter">>Événements</li>
+                            <li class="infoFooter">>Contact</li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <p class="titreFooter">Suivez-nous</p>
+                        <img src="" alt="icone twitter">
+                        <img src="" alt="icone facebook">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
