@@ -5,7 +5,7 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <div class="col mx-auto">
+            <div class="col">
                 <form method="post">
                     {% if error %}
                         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -17,7 +17,7 @@
                         </div>
                     {% endif %}
 
-                    <h1 class="h3 mb-3 font-weight-normal">Connectez-vous</h1>
+                    <h2 class="h3 mb-3 font-weight-normal">Connectez-vous</h2>
                     <label for="inputEmail">Email</label>
                     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
                     <label for="inputPassword">Mot de passe </label>
@@ -42,11 +42,11 @@
                         Connexion
                     </button>
 
-                    <a class="mx-auto" href="">Mot de passe oublié ?</a>
+                    <a class="mx-auto" href="{{ path('app_oublie_mdp') }}">Mot de passe oublié ?</a>
                 </form>
             </div>
-            <div class="col mx-auto">
-                Pas encore de compte ?
+            <div class="col mx-auto ">
+                <h2>Pas encore de compte ?</h2>
             </div>
 
         </div>

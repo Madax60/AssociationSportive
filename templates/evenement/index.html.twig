@@ -39,8 +39,8 @@
                 <td>{{ evenement.duree }}</td>
                 <td>{{ evenement.dateFin ? evenement.dateFin|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('evenement_show', {'id': evenement.id}) }}">show</a>
-                    <a href="{{ path('evenement_edit', {'id': evenement.id}) }}">edit</a>
+                    <a href="{{ path('evenement_show', {'id': evenement.id}) }}">Montrer</a>
+                    <a href="{{ path('evenement_edit', {'id': evenement.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -51,5 +51,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('evenement_new') }}">Create new</a>
+    <a href="{{ path('evenement_new') }}">Créer un évènement</a>
 {% endblock %}
