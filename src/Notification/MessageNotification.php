@@ -30,7 +30,7 @@ class MessageNotification
 
             ->setFrom($message->getEmail())
             //A qui est destiné l'email
-            ->setTo('tony.nguyen1999i@gmail.com')
+            ->setTo('projetsymfonystvincent@gmail.com')
             //A qui on va répondre
             ->setReplyTo($message->getEmail())
             ->setBody($this->renderer->render('emails/message.html.twig', [
