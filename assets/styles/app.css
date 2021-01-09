@@ -77,3 +77,11 @@ footer ul {
     max-width: 100%;
     height: auto;
 }
+
+.fa-cog a {
+    color: #565555;
+}
+
+.fa-cog:before {
+    content: none;
+}

@@ -33,9 +33,9 @@ class EmailController extends AbstractController
             $notification->notify($message);
 
             $this->addFlash('success', 'Votre email a bien été envoyé');
-            /*
-            return $this->redirectToRoute('app_oublie_mdp');
-            */
+
+            return $this->redirectToRoute('app_login');
+
             }
 
         return $this->render('security/oublie_motdepasse.html.twig', [
