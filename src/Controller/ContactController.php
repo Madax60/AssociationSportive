@@ -41,7 +41,7 @@ class ContactController extends AbstractController
             //On envoie le message
             $mailer->send($message);
 
-            $this->addFlash('message', 'Email envoyé à un administrateur');
+            $this->addFlash('success', 'Email envoyé à un administrateur');
             return $this->redirectToRoute('app_login');
         }
         return $this->render('contact/oublie_mdp.html.twig', [
