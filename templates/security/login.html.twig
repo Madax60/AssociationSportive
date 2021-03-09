@@ -6,6 +6,11 @@
     <div class="container">
         <div class="row">
             <div class="col">
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{message}}
+                    </div>
+                {% endfor %}
                 <form method="post">
                     {% if error %}
                         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -42,7 +47,7 @@
                         Connexion
                     </button>
 
-                    <a class="mx-auto" href="{{ path('app_oublie_mdp') }}">Mot de passe oublié ?</a>
+                    <a class="mx-auto" href="{{ path('contact') }}">Mot de passe oublié ?</a>
                 </form>
             </div>
             <div class="col-6 rightLogin">

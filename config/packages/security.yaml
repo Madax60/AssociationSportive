@@ -38,7 +38,7 @@ security:
         #Lorsque l'url contient le mot admin il faut que
         #l'utilisateur ai le role admin
          - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/profile, roles: ROLE_USER }
 
     #je creer une hierarchie entre ses roles.
     #Lorque je suis editeur, j'hérite de user

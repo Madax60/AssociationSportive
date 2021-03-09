@@ -22,17 +22,15 @@ final class UserFixtures extends Fixture
         $roles = [
             User::ROLE_USER,
             User::ROLE_ADMIN,
-            User::ROLE_SUPER_ADMIN,
         ];
 
-        for ($i = 1; $i < 25; $i++) {
+        for ($i = 1; $i < 10; $i++) {
             $user = new User();
-            $roles[] = 'ROLE_ADMIN';
             $password = '123';
 
             $user
                 ->setEmail('user-'.$i.'@gmail.com')
-                ->setUsername('user-'.$i);
+                ->setRoles([$roles[rand(0,1)]]);
 
             // Encode le mot de passe et l'insère dans le champ "password".
             $user->setPassword($this->encoder->encodePassword($user, $password));
