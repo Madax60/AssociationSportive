@@ -21,22 +21,20 @@ class Evenement
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Entity\Sport")
-     * @ORM\Column(type="integer")
+     * @ORM\OneToOne(targetEntity=Sport::class)
      * @Assert\NotBlank()
      */
-    private $Sport_id;
+    private $Sport;
 
     /**
-     * @ORM\OneToOne(targetEntity="Entity\Type")
-     * @ORM\Column(type="integer")
+     * @ORM\OneToOne(targetEntity=Type::class)
      */
-    private $Type_id;
+    private $Type;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\OneToOne(targetEntity=Categorie::class)
      */
-    private $Categorie_id;
+    private $Categorie;
 
     /**
      * @ORM\Column(type="string", length=45)
@@ -93,38 +91,38 @@ class Evenement
         return $this->id;
     }
 
-    public function getSportId(): ?int
+    public function getSport(): ?int
     {
-        return $this->Sport_id;
+        return $this->Sport;
     }
 
-    public function setSportId(int $Sport_id): self
+    public function setSport(Sport $Sport): self
     {
-        $this->Sport_id = $Sport_id;
+        $this->Sport = $Sport;
 
         return $this;
     }
 
-    public function getTypeId(): ?int
+    public function getType(): ?int
     {
-        return $this->Type_id;
+        return $this->Type;
     }
 
-    public function setTypeId(int $Type_id): self
+    public function setType(Type $Type): self
     {
-        $this->Type_id = $Type_id;
+        $this->Type = $Type;
 
         return $this;
     }
 
-    public function getCategorieId(): ?int
+    public function getCategorie(): ?int
     {
-        return $this->Categorie_id;
+        return $this->Categorie;
     }
 
-    public function setCategorieId(int $Categorie_id): self
+    public function setCategorieId(Categorie $Categorie): self
     {
-        $this->Categorie_id = $Categorie_id;
+        $this->Categorie = $Categorie;
 
         return $this;
     }

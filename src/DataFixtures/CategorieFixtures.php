@@ -2,21 +2,22 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Type;
+use App\Entity\Categorie;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
-class TypeFixtures extends Fixture
+class CategorieFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
+        // create 20 products! Bam!
         for ($i = 0; $i < 5; $i++) {
-            $type = new  Type();
+            $categ = new  Categorie();
             
-            $type
-                ->setNom('Type '.$i);
+            $categ
+                ->setNom('Catégorie '.$i);
             
-                $manager->persist($type);
+                $manager->persist($categ);
         }
         $manager->flush();
     }
