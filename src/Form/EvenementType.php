@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Evenement;
 use App\Entity\Sport;
+use App\Entity\Type;
 use Doctrine\DBAL\Types\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -19,6 +20,12 @@ class EvenementType extends AbstractType
             ->add('Sport', EntityType::class, [
                 'class' => 'App\Entity\Sport',
                 'placeholder' => 'Sélectionnez le sport',
+                'mapped' => false,
+                'required' => false
+            ])
+            ->add('Type', EntityType::class, [
+                'class' => 'App\Entity\Type',
+                'placeholder' => 'Sélectionnez le type',
                 'mapped' => false,
                 'required' => false
             ]);
