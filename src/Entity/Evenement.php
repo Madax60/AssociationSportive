@@ -6,6 +6,7 @@ use App\Repository\EvenementRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=EvenementRepository::class)
@@ -20,11 +21,14 @@ class Evenement
     private $id;
 
     /**
+     * @ORM\OneToOne(targetEntity="Entity\Sport")
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
      */
     private $Sport_id;
 
     /**
+     * @ORM\OneToOne(targetEntity="Entity\Type")
      * @ORM\Column(type="integer")
      */
     private $Type_id;
@@ -243,5 +247,9 @@ class Evenement
         $this->User->removeElement($user);
 
         return $this;
+    }
+    public function __toString()
+    {
+        return $this->Nom;
     }
 }
