@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,27 +24,34 @@
             <div class="lineBtn">
                 <div class="sideLeft">
                     <a href="{{ path('accueil') }}" class="settingBtn">logo</a>
-                    <a href="{{ path('accueil') }}"class="settingBtn">ACCUEIL</a>
+                    <a href="{{ path('accueil') }}" class="settingBtn">ACCUEIL</a>
                 </div>
                 <div class="d-flex flex-row sideRight">
-                    <span class="icons-iog">
-                       <a href=""><i class="far fa-id-card fa-2x"></i></a>
-                    </span>
-                    <a class="settingBtn" href="{{ path('app_login') }}">S'IDENTIFIER</a>
+
+                    {% if is_granted('IS_ANONYMOUS') %}
+                        <a class="settingBtn" href="{{ path('app_login') }}">S'IDENTIFIER</a>
+                    {% endif %}
+
+                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                        <span class="icons-iog">
+                            <a href=""><i class="far fa-id-card fa-2x"></i></a>
+                        </span>
+                        <li><a href="logout">Déconnexion</a></li>
+                    {% endif %}
                 </div>
             </div>
         </div>
     </header>
 {% endblock %}
 
-    <body>
-        {% block body %}
-        {% endblock %}
+<body>
+{% block body %}
+{% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </body>
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+</body>
 {% block footer %}
     <footer>
         <div class="footerMain">
