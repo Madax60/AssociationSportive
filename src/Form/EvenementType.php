@@ -21,7 +21,6 @@ class EvenementType extends AbstractType
             ->add('Categorie', EntityType::class, [
                 'class' => Categorie::class,
                 'placeholder' => 'Sélectionnez la catégorie',
-                'required' => false
             ])
             ->add("Nom", TextType::class)
             ->add('description')
