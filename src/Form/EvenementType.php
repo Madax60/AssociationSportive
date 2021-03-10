@@ -28,7 +28,6 @@ class EvenementType extends AbstractType
             ->add('nombre_places')
             ->add('image')
             ->add('vignette')
-            ->add('duree')
             ->add('date_fin')
             ->add('Sport', EntityType::class, [
                 'class' => Sport::class,

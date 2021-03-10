@@ -21,18 +21,18 @@ class Evenement
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity=Sport::class)
+     * @ORM\ManyToMany(targetEntity=Sport::class, mappedBy="Evenement")
      * @Assert\NotBlank()
      */
     private $Sport;
 
     /**
-     * @ORM\OneToOne(targetEntity=Type::class)
+     * @ORM\ManyToMany(targetEntity=Type::class, mappedBy="Evenement")
      */
     private $Type;
 
     /**
-     * @ORM\OneToOne(targetEntity=Categorie::class)
+     * @ORM\ManyToMany(targetEntity=Categorie::class, mappedBy="Evenement")
      */
     private $Categorie;
 
@@ -84,6 +84,9 @@ class Evenement
     public function __construct()
     {
         $this->User = new ArrayCollection();
+        $this->Categorie = new ArrayCollection();
+        $this->Sport = new ArrayCollection();
+        $this->Type = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -120,7 +123,7 @@ class Evenement
         return $this->Categorie;
     }
 
-    public function setCategorieId(Categorie $Categorie): self
+    public function setCategorie(Categorie $Categorie): self
     {
         $this->Categorie = $Categorie;
 
