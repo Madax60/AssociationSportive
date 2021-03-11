@@ -22,19 +22,22 @@ class Evenement
 
     /**
      * @ORM\ManyToMany(targetEntity=Sport::class, mappedBy="Evenement")
+     * @ORM\JoinColumn(type="integer")
      * @Assert\NotBlank()
      */
-    private $Sport;
+    private $sport;
 
     /**
      * @ORM\ManyToMany(targetEntity=Type::class, mappedBy="Evenement")
+     * @ORM\JoinColumn(type="integer")
      */
-    private $Type;
+    private $type;
 
     /**
      * @ORM\ManyToMany(targetEntity=Categorie::class, mappedBy="Evenement")
+     * @ORM\JoinColumn(type="integer")
      */
-    private $Categorie;
+    private $categorie;
 
     /**
      * @ORM\Column(type="string", length=45)
@@ -84,48 +87,49 @@ class Evenement
     public function __construct()
     {
         $this->User = new ArrayCollection();
-        $this->Categorie = new ArrayCollection();
-        $this->Sport = new ArrayCollection();
-        $this->Type = new ArrayCollection();
+        $this->categorie = new ArrayCollection();
+        $this->sport = new ArrayCollection();
+        $this->type = new ArrayCollection();
+
     }
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getSport(): ?int
+    public function getSport(): int
     {
-        return $this->Sport;
+        return $this->sport;
     }
 
-    public function setSport(Sport $Sport): self
+    public function setSport(Sport $sport): self
     {
-        $this->Sport = $Sport;
+        $this->sport = $sport;
 
         return $this;
     }
 
-    public function getType(): ?int
+    public function getType(): int
     {
-        return $this->Type;
+        return $this->type;
     }
 
-    public function setType(Type $Type): self
+    public function setType(Type $type): self
     {
-        $this->Type = $Type;
+        $this->type = $type;
 
         return $this;
     }
 
-    public function getCategorie(): ?int
+    public function getCategorie(): int
     {
-        return $this->Categorie;
+        return $this->categorie;
     }
 
-    public function setCategorie(Categorie $Categorie): self
+    public function setCategorie(Categorie $categorie): self
     {
-        $this->Categorie = $Categorie;
+        $this->categorie = $categorie;
 
         return $this;
     }
