@@ -6,6 +6,7 @@ use App\Repository\EvenementRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=EvenementRepository::class)
@@ -18,21 +19,24 @@ class Evenement
      * @ORM\Column(type="integer")
      */
     private $id;
-
+    
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="evenements")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $Sport_id;
-
+    private $category;
+    
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="evenements")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $Type_id;
-
+    private $type;
+    
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=Sport::class, inversedBy="evenements")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $Categorie_id;
+    private $sport;
 
     /**
      * @ORM\Column(type="string", length=45)
@@ -40,7 +44,7 @@ class Evenement
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $description;
 
@@ -79,50 +83,15 @@ class Evenement
      */
     private $User;
 
+
     public function __construct()
     {
         $this->User = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
-    }
-
-    public function getSportId(): ?int
-    {
-        return $this->Sport_id;
-    }
-
-    public function setSportId(int $Sport_id): self
-    {
-        $this->Sport_id = $Sport_id;
-
-        return $this;
-    }
-
-    public function getTypeId(): ?int
-    {
-        return $this->Type_id;
-    }
-
-    public function setTypeId(int $Type_id): self
-    {
-        $this->Type_id = $Type_id;
-
-        return $this;
-    }
-
-    public function getCategorieId(): ?int
-    {
-        return $this->Categorie_id;
-    }
-
-    public function setCategorieId(int $Categorie_id): self
-    {
-        $this->Categorie_id = $Categorie_id;
-
-        return $this;
     }
 
     public function getNom(): ?string
@@ -244,4 +213,45 @@ class Evenement
 
         return $this;
     }
+    public function __toString()
+    {
+        return $this->Nom;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getType(): ?Type
+    {
+        return $this->type;
+    }
+
+    public function setType(?Type $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getSport(): ?Sport
+    {
+        return $this->sport;
+    }
+
+    public function setSport(?Sport $sport): self
+    {
+        $this->sport = $sport;
+
+        return $this;
+    }
+
 }
