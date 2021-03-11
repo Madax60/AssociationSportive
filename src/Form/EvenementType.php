@@ -17,10 +17,10 @@ class EvenementType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Categorie', EntityType::class, [
-                'class' => Categorie::class,
-                'placeholder' => 'Sélectionnez la catégorie',
-            ])
+            // ->add('Categorie', EntityType::class, [
+            //     'class' => Categorie::class,
+            //     'placeholder' => 'Sélectionnez la catégorie',
+            // ])
             ->add("Nom", TextType::class)
             ->add('description')
             ->add('date_debut')
@@ -29,16 +29,16 @@ class EvenementType extends AbstractType
             ->add('vignette')
             ->add('duree')
             ->add('date_fin')
-            ->add('Sport', EntityType::class, [
-                'class' => Sport::class,
-                'placeholder' => 'Sélectionnez le sport',
-                'required' => true
-            ])
-            ->add('Type', EntityType::class, [
-                'class' => Type::class,
-                'placeholder' => 'Sélectionnez le type',
-                'required' => true
-            ])
+            // ->add('Sport', EntityType::class, [
+            //     'class' => Sport::class,
+            //     'placeholder' => 'Sélectionnez le sport',
+            //     'required' => true
+            // ])
+            // ->add('Type', EntityType::class, [
+            //     'class' => Type::class,
+            //     'placeholder' => 'Sélectionnez le type',
+            //     'required' => true
+            // ])
            
         ;
     }

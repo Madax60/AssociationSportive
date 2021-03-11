@@ -9,9 +9,9 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Sport_id</th>
-                <th>Type_id</th>
-                <th>Categorie_id</th>
+                <th>Sport</th>
+                <th>Type</th>
+                <th>Categorie</th>
                 <th>Nom</th>
                 <th>Description</th>
                 <th>Date_debut</th>
@@ -27,6 +27,9 @@
         {% for evenement in evenements %}
             <tr>
                 <td>{{ evenement.id }}</td>
+                <td>{{ evenement.Sport.nom }}</td>
+                <td>{{ evenement.Type.nom }}</td>
+                <td>{{ evenement.Categorie.nom }}</td>
                 <td>{{ evenement.nom }}</td>
                 <td>{{ evenement.description }}</td>
                 <td>{{ evenement.dateDebut ? evenement.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
