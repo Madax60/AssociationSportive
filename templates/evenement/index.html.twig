@@ -13,7 +13,16 @@
         <thead>
             <tr class="row text-center">
                 <th class="col-1">Id</th>
+                <th class="col">Nom du sport</th>
+                <th class="col">Nom du type</th>
+                <th class="col">Nom de la catégorie</th>
                 <th class="col">Nom de l'évènement</th>
+                <th class="col">Description</th>
+                <th class="col">Date de debut</th>
+                <th class="col">Nombre de places</th>
+                <th class="col">Image</th>
+                <th class="col">Duree</th>
+                <th class="col">Date de fin</th>
                 <th class="col-2">Action</th>
             </tr>
         </thead>
@@ -21,7 +30,17 @@
         {% for evenement in evenements %}
             <tr class="row text-center">
                 <td class="col-1">{{ evenement.id }}</td>
+                <td class="col">{{ evenement.sport_id }}</td>
+                <td class="col">{{ evenement.type_id }}</td>
+                <td class="col">{{ evenement.categorie_id }}</td>
                 <td class="col">{{ evenement.nom }}</td>
+                <td class="col">{{ evenement.description }}</td>
+                <td class="col">{{ evenement.date_debut }}</td>
+                <td class="col">{{ evenement.nombre_places }}</td>
+                <td class="col">{{ evenement.image }}</td>
+                <td class="col">{{ evenement.vignette }}</td>
+                <td class="col">{{ evenement.duree }}</td>
+                <td class="col">{{ evenement.date_fin }}</td>
                 <td class="col-2">
                     <a href="{{ path('evenement_show', {'id': evenement.id}) }}"><i style="font-size: 24px" class="fas fa-eye"></i></a>
                     <a class="mx-2" href="{{ path('evenement_edit', {'id': evenement.id}) }}"><i style="font-size: 24px" class="fas fa-pencil-alt"></i></a>
