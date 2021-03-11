@@ -27,9 +27,6 @@
         {% for evenement in evenements %}
             <tr>
                 <td>{{ evenement.id }}</td>
-                <td>{{ evenement.Sport }}</td>
-                <td>{{ evenement.Type }}</td>
-                <td>{{ evenement.Categorie }}</td>
                 <td>{{ evenement.nom }}</td>
                 <td>{{ evenement.description }}</td>
                 <td>{{ evenement.dateDebut ? evenement.dateDebut|date('Y-m-d H:i:s') : '' }}</td>

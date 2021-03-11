@@ -21,25 +21,6 @@ class Evenement
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Sport::class, mappedBy="Evenement")
-     * @ORM\JoinColumn(type="integer")
-     * @Assert\NotBlank()
-     */
-    private $sport;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Type::class, mappedBy="Evenement")
-     * @ORM\JoinColumn(type="integer")
-     */
-    private $type;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Categorie::class, mappedBy="Evenement")
-     * @ORM\JoinColumn(type="integer")
-     */
-    private $categorie;
-
-    /**
      * @ORM\Column(type="string", length=45)
      */
     private $nom;
@@ -84,54 +65,32 @@ class Evenement
      */
     private $User;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="evenements")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $categorie;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="evenements")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Sport::class, inversedBy="evenements")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $sport;
+
     public function __construct()
     {
         $this->User = new ArrayCollection();
-        $this->categorie = new ArrayCollection();
-        $this->sport = new ArrayCollection();
-        $this->type = new ArrayCollection();
-
     }
 
     public function getId(): int
     {
         return $this->id;
-    }
-
-    public function getSport(): int
-    {
-        return $this->sport;
-    }
-
-    public function setSport(Sport $sport): self
-    {
-        $this->sport = $sport;
-
-        return $this;
-    }
-
-    public function getType(): int
-    {
-        return $this->type;
-    }
-
-    public function setType(Type $type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    public function getCategorie(): int
-    {
-        return $this->categorie;
-    }
-
-    public function setCategorie(Categorie $categorie): self
-    {
-        $this->categorie = $categorie;
-
-        return $this;
     }
 
     public function getNom(): ?string
@@ -256,5 +215,41 @@ class Evenement
     public function __toString()
     {
         return $this->Nom;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): self
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getType(): ?Type
+    {
+        return $this->type;
+    }
+
+    public function setType(?Type $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getSport(): ?Sport
+    {
+        return $this->sport;
+    }
+
+    public function setSport(?Sport $sport): self
+    {
+        $this->sport = $sport;
+
+        return $this;
     }
 }
