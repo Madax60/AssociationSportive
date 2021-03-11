@@ -1,55 +1,58 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Evenement index{% endblock %}
+{% block title %}Evènement{% endblock %}
 
 {% block body %}
-    <h1>Evenement index</h1>
+    <h1 class="my-3 text-center">Liste des évènements</h1>
 
-    <table class="table">
+    <div class="container my-5">
+        <a class="bg-primary p-3 rounded text-white" href="{{ path('evenement_new') }}">Ajouter un évènement</a>
+    </div>
+
+    <table class="container table">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Sport_id</th>
-                <th>Type_id</th>
-                <th>Categorie_id</th>
-                <th>Nom</th>
-                <th>Description</th>
-                <th>Date_debut</th>
-                <th>Nombre_places</th>
-                <th>Image</th>
-                <th>Vignette</th>
-                <th>Duree</th>
-                <th>Date_fin</th>
-                <th>actions</th>
+            <tr class="row text-center">
+                <th class="col-1">Id</th>
+                <th class="col">Nom du sport</th>
+                <th class="col">Nom du type</th>
+                <th class="col">Nom de la catégorie</th>
+                <th class="col">Nom de l'évènement</th>
+                <th class="col">Description</th>
+                <th class="col">Date de debut</th>
+                <th class="col">Nombre de places</th>
+                <th class="col">Image</th>
+                <th class="col">Duree</th>
+                <th class="col">Date de fin</th>
+                <th class="col-2">Action</th>
             </tr>
         </thead>
         <tbody>
         {% for evenement in evenements %}
-            <tr>
-                <td>{{ evenement.id }}</td>
-                <td>{{ evenement.SportId }}</td>
-                <td>{{ evenement.TypeId }}</td>
-                <td>{{ evenement.CategorieId }}</td>
-                <td>{{ evenement.nom }}</td>
-                <td>{{ evenement.description }}</td>
-                <td>{{ evenement.dateDebut ? evenement.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ evenement.nombrePlaces }}</td>
-                <td>{{ evenement.image }}</td>
-                <td>{{ evenement.vignette }}</td>
-                <td>{{ evenement.duree }}</td>
-                <td>{{ evenement.dateFin ? evenement.dateFin|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('evenement_show', {'id': evenement.id}) }}">Montrer</a>
-                    <a href="{{ path('evenement_edit', {'id': evenement.id}) }}">Modifier</a>
+            <tr class="row text-center">
+                <td class="col-1">{{ evenement.id }}</td>
+                <td class="col">{{ evenement.sport_id }}</td>
+                <td class="col">{{ evenement.type_id }}</td>
+                <td class="col">{{ evenement.categorie_id }}</td>
+                <td class="col">{{ evenement.nom }}</td>
+                <td class="col">{{ evenement.description }}</td>
+                <td class="col">{{ evenement.date_debut }}</td>
+                <td class="col">{{ evenement.nombre_places }}</td>
+                <td class="col">{{ evenement.image }}</td>
+                <td class="col">{{ evenement.vignette }}</td>
+                <td class="col">{{ evenement.duree }}</td>
+                <td class="col">{{ evenement.date_fin }}</td>
+                <td class="col-2">
+                    <a href="{{ path('evenement_show', {'id': evenement.id}) }}"><i style="font-size: 24px" class="fas fa-eye"></i></a>
+                    <a class="mx-2" href="{{ path('evenement_edit', {'id': evenement.id}) }}"><i style="font-size: 24px" class="fas fa-pencil-alt"></i></a>
+                    <a href="{{ path('evenement_delete', {'id': evenement.id}) }}"><i style="font-size: 24px" class="fas fa-trash-alt"></i></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="13">no records found</td>
+                <td colspan="13">Il n'y a aucun évènement</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('evenement_new') }}">Créer un évènement</a>
 {% endblock %}
