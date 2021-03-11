@@ -25,6 +25,11 @@
                 <div class="sideLeft">
                     <a href="{{ path('accueil') }}" class="settingBtn">logo</a>
                     <a href="{{ path('accueil') }}" class="settingBtn">ACCUEIL</a>
+                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="evenement">Evenement</a>
+                        {% endif %}
+                    {% endif %}
                 </div>
                 <div class="d-flex flex-row sideRight">
 
@@ -39,9 +44,6 @@
                             </div>
                         </a>
                         <li><a href="logout">Déconnexion</a></li>
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <li><a href="evenement">Evenement</a></li>
-                        {% endif %}
                     {% endif %}
                 </div>
             </div>
