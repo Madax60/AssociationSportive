@@ -19,6 +19,24 @@ class Evenement
      * @ORM\Column(type="integer")
      */
     private $id;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="evenements")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="evenements")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $type;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity=Sport::class, inversedBy="evenements")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $sport;
 
     /**
      * @ORM\Column(type="string", length=45)
@@ -65,23 +83,6 @@ class Evenement
      */
     private $User;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="evenements")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $category;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="evenements")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $type;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Sport::class, inversedBy="evenements")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $sport;
 
     public function __construct()
     {
@@ -252,4 +253,5 @@ class Evenement
 
         return $this;
     }
+
 }

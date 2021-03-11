@@ -12,35 +12,35 @@
     <table class="container table">
         <thead>
             <tr class="row text-center">
-                <th class="col-1">Id</th>
                 <th class="col">Nom du sport</th>
                 <th class="col">Nom du type</th>
-                <th class="col">Nom de la catégorie</th>
                 <th class="col">Nom de l'évènement</th>
+                <th class="col">Nom de la catégorie</th>
                 <th class="col">Description</th>
                 <th class="col">Date de debut</th>
                 <th class="col">Nombre de places</th>
                 <th class="col">Image</th>
+                <th class="col">Vignette</th>
                 <th class="col">Duree</th>
                 <th class="col">Date de fin</th>
                 <th class="col-2">Action</th>
             </tr>
         </thead>
         <tbody>
+        
         {% for evenement in evenements %}
             <tr class="row text-center">
-                <td class="col-1">{{ evenements.id }}</td>
-                <td class="col">{{ evenements.sport_id }}</td>
-                <td class="col">{{ evenements.type_id }}</td>
-                <td class="col">{{ evenements.categorie_id }}</td>
-                <td class="col">{{ evenements.nom }}</td>
-                <td class="col">{{ evenements.description }}</td>
-                <td class="col">{{ evenements.date_debut }}</td>
-                <td class="col">{{ evenements.nombre_places }}</td>
-                <td class="col">{{ evenements.image }}</td>
-                <td class="col">{{ evenements.vignette }}</td>
-                <td class="col">{{ evenements.duree }}</td>
-                <td class="col">{{ evenements.date_fin }}</td>
+                <td class="col">{{ evenement.sport }}</td>
+                <td class="col">{{ evenement.type }}</td>
+                <td class="col">{{ evenement.category }}</td>
+                <td class="col">{{ evenement.nom }}</td>
+                <td class="col">{{ evenement.description }}</td>
+                <td class="col">{{ evenement.GetDateDebut|date("m/d/Y", "Europe/Paris") }}</td>
+                <td class="col">{{ evenement.GetNombrePlaces() }}</td>
+                <td class="col">{{ evenement.GetImage() }}</td>
+                <td class="col">{{ evenement.GetVignette() }}</td>
+                <td class="col">{{ evenement.GetDuree() }}</td>
+                <td class="col">{{ evenement.GetDateFin|date("m/d/Y", "Europe/Paris") }}</td>
                 <td class="col-2">
                     <a href="{{ path('evenement_show', {'id': evenement.id}) }}"><i style="font-size: 24px" class="fas fa-eye"></i></a>
                     <a class="mx-2" href="{{ path('evenement_edit', {'id': evenement.id}) }}"><i style="font-size: 24px" class="fas fa-pencil-alt"></i></a>

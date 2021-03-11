@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Categorie;
+use App\Entity\Category;
 use App\Entity\Evenement;
 use App\Entity\Sport;
 use App\Entity\Type;
@@ -17,11 +17,23 @@ class EvenementType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            // ->add('Categorie', EntityType::class, [
-            //     'class' => Categorie::class,
-            //     'placeholder' => 'Sélectionnez la catégorie',
-            // ])
-            // ->add("Nom", TextType::class)
+            ->add('Category', EntityType::class, [
+                'class' => Category::class,
+                'placeholder' => 'Sélectionnez la catégorie',
+            ])
+            ->add('Type', EntityType::class, [
+                'class' => Type::class,
+                'placeholder' => 'Sélectionnez le type',
+                'required' => true,
+
+            ])
+            ->add('Sport', EntityType::class, [
+                    'class' => Sport::class,
+                    'placeholder' => 'Sélectionnez le sport',
+                    'required' => true,
+
+                ])
+            ->add("Nom", TextType::class)
             ->add('description')
             ->add('date_debut')
             ->add('nombre_places')
@@ -29,17 +41,6 @@ class EvenementType extends AbstractType
             ->add('vignette')
             ->add('duree')
             ->add('date_fin')
-            // ->add('Sport', EntityType::class, [
-            //     'class' => Sport::class,
-            //     'placeholder' => 'Sélectionnez le sport',
-            //     'required' => true
-            // ])
-            // ->add('Type', EntityType::class, [
-            //     'class' => Type::class,
-            //     'placeholder' => 'Sélectionnez le type',
-            //     'required' => true
-            // ])
-           
         ;
     }
 
