@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}type{% endblock %}
+
+{% block body %}
+    <div class="m-3">
+        <a class="btn bg-primary px-3 py-2 rounded text-white" href="{{ path('type_index') }}"><i class="fas fa-arrow-left"></i> Retour à la liste</a>
+    </div>
+    <div class="container m-auto text-center">
+        <h1>Supprimer un type</h1>
+        <div class="container m-auto py-5">
+            <h3>Id: {{ type.id }}</h3>
+            <h3>Nom: {{ type.nom }}</h3>
+        </div>
+    </div>
+
+{% endblock %}

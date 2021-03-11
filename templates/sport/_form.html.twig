@@ -1,4 +1,7 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="container my-5">
+        <button class="btn bg-primary px-3 py-2 rounded text-white">{{ button_label|default('Ajouter') }}</button>
+    </div>
+
 {{ form_end(form) }}

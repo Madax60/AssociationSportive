@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Type{% endblock %}
+
+{% block body %}
+    <div class="m-3">
+        <a class="btn bg-primary px-3 py-2 rounded text-white" href="{{ path('type_index') }}"><i class="fas fa-arrow-left"></i> Retour à la liste</a>
+    </div>
+
+    <div class="container m-auto text-center">
+        <h1 class="my-5">type</h1>
+
+        {{ include('type/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+        <a href="{{ path('type_index') }}">Retourner à la liste des types</a>
+    </div>
+
+{% endblock %}

@@ -149,7 +149,7 @@
       <updated>1615190879257</updated>
       <workItem from="1615190881092" duration="69000" />
       <workItem from="1615191671823" duration="34000" />
-      <workItem from="1615382550850" duration="3883000" />
+      <workItem from="1615382550850" duration="20218000" />
     </task>
     <servers />
   </component>
@@ -157,9 +157,17 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="617" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1615416651660">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="617" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040/1920.0.1080.1880@0.0.1920.1040" timestamp="1615416651660" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1615386654763">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1080.1880@0.0.1920.1040" timestamp="1615386654763" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1615416111742">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/1920.0.1080.1880@0.0.1920.1040" timestamp="1615416111742" />
   </component>
 </project>

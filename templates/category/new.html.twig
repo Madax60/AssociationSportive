@@ -1,11 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter un évènement{% endblock %}
+{% block title %}Ajouter un categorie{% endblock %}
 
 {% block body %}
-    <h1>Ajouter un Evenement</h1>
+    <div class="m-3">
+        <a class="btn bg-primary px-3 py-2 rounded text-white" href="{{ path('category_index') }}"><i class="fas fa-arrow-left"></i> Retour à la liste</a>
+    </div>
 
-    {{ include('evenement/_form.html.twig') }}
+    <div class="container m-auto text-center ">
+        <h1 class="my-5">Ajouter un categorie</h1>
 
-    <a href="{{ path('evenement_index') }}">Retour aux évènements</a>
+        {{ include('category/_form.html.twig') }}
+    </div>
+
 {% endblock %}
