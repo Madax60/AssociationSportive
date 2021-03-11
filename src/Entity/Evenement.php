@@ -66,10 +66,10 @@ class Evenement
     private $User;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="evenements")
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="evenements")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $categorie;
+    private $category;
 
     /**
      * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="evenements")
@@ -217,14 +217,14 @@ class Evenement
         return $this->Nom;
     }
 
-    public function getCategorie(): ?Categorie
+    public function getCategory(): ?Category
     {
-        return $this->categorie;
+        return $this->category;
     }
 
-    public function setCategorie(?Categorie $categorie): self
+    public function setCategory(?Category $category): self
     {
-        $this->categorie = $categorie;
+        $this->category = $category;
 
         return $this;
     }

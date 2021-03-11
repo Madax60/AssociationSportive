@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\CategorieRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=CategorieRepository::class)
+ * @ORM\Entity(repositoryClass=CategoryRepository::class)
  */
-class Categorie
+class Category
 {
     /**
      * @ORM\Id
@@ -25,7 +25,7 @@ class Categorie
     private $nom;
 
     /**
-     * @ORM\OneToMany(targetEntity=Evenement::class, mappedBy="categorie")
+     * @ORM\OneToMany(targetEntity=Evenement::class, mappedBy="category")
      */
     private $evenements;
 
@@ -67,7 +67,7 @@ class Categorie
     {
         if (!$this->evenements->contains($evenement)) {
             $this->evenements[] = $evenement;
-            $evenement->setCategorie($this);
+            $evenement->setCategory($this);
         }
 
         return $this;
@@ -77,8 +77,8 @@ class Categorie
     {
         if ($this->evenements->removeElement($evenement)) {
             // set the owning side to null (unless already changed)
-            if ($evenement->getCategorie() === $this) {
-                $evenement->setCategorie(null);
+            if ($evenement->getCategory() === $this) {
+                $evenement->setCategory(null);
             }
         }
 

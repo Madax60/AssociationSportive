@@ -21,7 +21,7 @@ class EvenementType extends AbstractType
             //     'class' => Categorie::class,
             //     'placeholder' => 'Sélectionnez la catégorie',
             // ])
-            ->add("Nom", TextType::class)
+            // ->add("Nom", TextType::class)
             ->add('description')
             ->add('date_debut')
             ->add('nombre_places')
