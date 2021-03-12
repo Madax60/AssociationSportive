@@ -7,10 +7,21 @@
         <a class="btn bg-primary px-3 py-2 rounded text-white" href="{{ path('evenement_index') }}"><i class="fas fa-arrow-left"></i> Retour à la liste</a>
     </div>
     <div class="container m-auto text-center">
-        <h1>Supprimer un évènement</h1>
+        <h1>évènement</h1>
         <div class="container m-auto py-5">
             <h3>Id: {{ evenement.id }}</h3>
             <h3>Nom: {{ evenement.nom }}</h3>
+            <h3 class="col">{{ evenement.sport }}</h3>
+            <h3 class="col">{{ evenement.type }}</h3>
+            <h3 class="col">{{ evenement.category }}</h3>
+            <h3 class="col">{{ evenement.nom }}</h3>
+            <h3 class="col">{{ evenement.description }}</h3>
+            <h3 class="col">{{ evenement.GetDateDebut|date("m/d/Y", "Europe/Paris") }}</h3>
+            <h3 class="col">{{ evenement.GetNombrePlaces() }}</h3>
+            <h3 class="col">{{ evenement.GetImage() }}</h3>
+            <h3 class="col">{{ evenement.GetVignette() }}</h3>
+            <h3 class="col">{{ evenement.GetDuree() }}</h3>
+            <h3 class="col">{{ evenement.GetDateFin|date("m/d/Y", "Europe/Paris") }}</h3>
         </div>
     </div>
 

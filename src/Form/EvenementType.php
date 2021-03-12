@@ -9,6 +9,7 @@ use App\Entity\Type;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -37,7 +38,9 @@ class EvenementType extends AbstractType
             ->add('description')
             ->add('date_debut')
             ->add('nombre_places')
-            ->add('image')
+            // ->add('image', FileType::class, [
+            //     'label' => 'Choisissez une image'
+            // ])
             ->add('vignette')
             ->add('duree')
             ->add('date_fin')
