@@ -38,9 +38,9 @@ class EvenementType extends AbstractType
             ->add('description')
             ->add('date_debut')
             ->add('nombre_places')
-            // ->add('image', FileType::class, [
-            //     'label' => 'Choisissez une image'
-            // ])
+            ->add('image', FileType::class, [
+                'label' => 'Choisissez une image'
+            ])
             ->add('vignette')
             ->add('duree')
             ->add('date_fin')

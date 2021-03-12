@@ -1,9 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DefaultController!{% endblock %}
-
+{% block title %}Accueil{% endblock %}
 {% block body %}
-    {{ message }}
-    
-
+    <tbody>    
+        {% for evenement in evenements %}
+            <tr class="row text-center">
+                <td class="col">{{ evenement.sport }}</td>
+                <td class="col">{{ evenement.type }}</td>
+                <td class="col">{{ evenement.category }}</td>
+                <td class="col">{{ evenement.nom }}</td>
+                <td class="col">{{ evenement.description }}</td>
+                <td class="col">{{ evenement.GetDateDebut|date("m/d/Y", "Europe/Paris") }}</td>
+                <td class="col">{{ evenement.GetNombrePlaces() }}</td>
+                <td class="col">{{ evenement.GetImage() }}</td>
+                <td class="col">{{ evenement.GetVignette() }}</td>
+                <td class="col">{{ evenement.GetDuree() }}</td>
+                <td class="col">{{ evenement.GetDateFin|date("m/d/Y", "Europe/Paris") }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">Il n'y a aucun évènement</td>
+            </tr>
+        {% endfor %}
+    </tbody>
 {% endblock %}
