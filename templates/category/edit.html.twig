@@ -1,13 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Evenement{% endblock %}
+{% block title %}Categorie{% endblock %}
 
 {% block body %}
-    <h1>Edit Evenement</h1>
+    <div class="m-3">
+        <a class="btn bg-primary px-3 py-2 rounded text-white" href="{{ path('category_index') }}"><i class="fas fa-arrow-left"></i> Retour à la liste</a>
+    </div>
 
-    {{ include('evenement/_form.html.twig', {'button_label': 'Update'}) }}
+    <div class="container m-auto text-center">
+        <h1 class="my-5">Categories</h1>
 
-    <a href="{{ path('evenement_index') }}">back to list</a>
+        {{ include('category/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    {{ include('evenement/_delete_form.html.twig') }}
+        <a href="{{ path('category_index') }}">Retourner à la liste des categories</a>
+    </div>
+
 {% endblock %}

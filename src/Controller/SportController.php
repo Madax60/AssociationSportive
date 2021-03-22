@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\sport;
-use App\Form\sportType;
-use App\Repository\sportRepository;
+use App\Entity\Sport;
+use App\Form\SportType;
+use App\Repository\SportRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,7 +33,7 @@ class SportController extends AbstractController
         //On instancie un nouvel sport
         $sport = new Sport();
         //Méthode qui génere le form
-        $form = $this->createForm(sportType::class, $sport);
+        $form = $this->createForm(SportType::class, $sport);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,9 +63,9 @@ class SportController extends AbstractController
     /**
      * @Route("/{id}/edit", name="sport_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, sport $sport): Response
+    public function edit(Request $request, Sport $sport): Response
     {
-        $form = $this->createForm(sportType::class, $sport);
+        $form = $this->createForm(SportType::class, $sport);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -83,7 +83,7 @@ class SportController extends AbstractController
     /**
      * @Route("/{id}", name="sport_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, sport $sport): Response
+    public function delete(Request $request, Sport $sport): Response
     {
         if ($this->isCsrfTokenValid('delete'.$sport->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();

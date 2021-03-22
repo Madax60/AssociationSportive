@@ -2,95 +2,95 @@
 
 namespace App\Controller;
 
-use App\Entity\Evenement;
-use App\Form\EvenementType;
-use App\Repository\EvenementRepository;
+use App\Entity\Category;
+use App\Form\CategoryType;
+use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/evenement")
+ * @Route("/category")
  */
 class CategoryController extends AbstractController
 {
     /**
-     * @Route("/", name="evenement_index", methods={"GET"})
+     * @Route("/", name="category_index", methods={"GET"})
      */
-    public function index(EvenementRepository $evenementRepository): Response
+    public function index(CategoryRepository $categoryRepository): Response
     {
-        return $this->render('evenement/index.html.twig', [
-            'evenements' => $evenementRepository->findAll(),
+        return $this->render('category/index.html.twig', [
+            'categorys' => $categoryRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/new", name="evenement_new", methods={"GET","POST"})
+     * @Route("/new", name="category_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
-        //On instancie un nouvel evenement
-        $evenement = new Evenement();
+        //On instancie un nouvel category
+        $category = new Category();
         //Méthode qui génere le form
-        $form = $this->createForm(EvenementType::class, $evenement);
+        $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($evenement);
+            $entityManager->persist($category);
             $entityManager->flush();
 
-            return $this->redirectToRoute('evenement_index');
+            return $this->redirectToRoute('category_index');
         }
 
-        return $this->render('evenement/new.html.twig', [
-            'evenement' => $evenement,
+        return $this->render('category/new.html.twig', [
+            'category' => $category,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="evenement_show", methods={"GET"})
+     * @Route("/{id}", name="category_show", methods={"GET"})
      */
-    public function show(Evenement $evenement): Response
+    public function show(Category $category): Response
     {
-        return $this->render('evenement/show.html.twig', [
-            'evenement' => $evenement,
+        return $this->render('category/show.html.twig', [
+            'category' => $category,
         ]);
     }
 
     /**
-     * @Route("/{id}/edit", name="evenement_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="category_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Evenement $evenement): Response
+    public function edit(Request $request, Category $category): Response
     {
-        $form = $this->createForm(EvenementType::class, $evenement);
+        $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('evenement_index');
+            return $this->redirectToRoute('category_index');
         }
 
-        return $this->render('evenement/edit.html.twig', [
-            'evenement' => $evenement,
+        return $this->render('category/edit.html.twig', [
+            'category' => $category,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="evenement_delete", methods={"DELETE"})
+     * @Route("/{id}", name="category_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Evenement $evenement): Response
+    public function delete(Request $request, Category $category): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$evenement->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($evenement);
+            $entityManager->remove($category);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('evenement_index');
+        return $this->redirectToRoute('category_index');
     }
 }
