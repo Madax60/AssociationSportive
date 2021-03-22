@@ -14,8 +14,8 @@
             <tr class="row text-center">
                 <th class="col">Nom du sport</th>
                 <th class="col">Nom du type</th>
-                <th class="col">Nom de l'évènement</th>
                 <th class="col">Nom de la catégorie</th>
+                <th class="col">Nom de l'évènement</th>
                 <th class="col">Description</th>
                 <th class="col">Date de debut</th>
                 <th class="col">Nombre de places</th>
@@ -37,6 +37,7 @@
                 <td class="col">{{ evenement.description }}</td>
                 <td class="col">{{ evenement.GetDateDebut|date("m/d/Y", "Europe/Paris") }}</td>
                 <td class="col">{{ evenement.GetNombrePlaces() }}</td>
+                <td class="col">{{ evenement.GetBrochureFilename() }}</td>
                 <td class="col">{{ evenement.GetVignette() }}</td>
                 <td class="col">{{ evenement.GetDuree() }}</td>
                 <td class="col">{{ evenement.GetDateFin|date("m/d/Y", "Europe/Paris") }}</td>
