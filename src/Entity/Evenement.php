@@ -78,23 +78,6 @@ class Evenement
      */
     private $User;
 
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $filename;
-
-    public function getFilename()
-    {
-        return $this->filename;
-    }
-
-    public function setFilename($filename)
-    {
-        $this->filename = $filename;
-
-        return $this;
-    }
-
     public function __construct()
     {
         $this->User = new ArrayCollection();
