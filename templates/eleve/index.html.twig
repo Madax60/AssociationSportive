@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Eleve index{% endblock %}
+
+{% block body %}
+    <h1>Eleve</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Category_id</th>
+                <th>date_naissance</th>
+                <th>nom</th>
+                <th>prenom</th>
+                <th>genre</th>
+                <th>date_creation</th>
+                <th>date_maj</th>
+                <th>archivee</th>
+                <th>Class_id</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for eleve in eleves %}
+            <tr>
+                <td>{{ eleve.getId }}</td>
+                <td>{{ eleve.getCategoryid }}</td>
+                <td>{{ eleve.getDateNaissance ? eleve.getDateNaissance|date('Y-m-d') : '' }}</td>
+                <td>{{ eleve.getNom }}</td>
+                <td>{{ eleve.getPrenom }}</td>
+                <td>{{ eleve.getGenre }}</td>
+
+                <td>{{ eleve.getDateCreation ? eleve.getDateCreation|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ eleve.getDateMaj ? eleve.getDateMaj|date('Y-m-d H:i:s') : '' }}</td>
+
+                <td>{{ eleve.getArchivee }}</td>
+                <td>{{ eleve.getClassId }}</td>
+                <td>
+                    <a href="{{ path('eleve_show', {'id': eleve.getId}) }}">Montrer</a>
+                    <a href="{{ path('eleve_edit', {'id': eleve.getId}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('evenement_new') }}">Créer un évènement</a>
+{% endblock %}
