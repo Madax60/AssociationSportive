@@ -11,7 +11,7 @@ class FileUploader
     private $targetDirectory;
     private $slugger;
 
-    public function __construct($targetDirectory, SluggerInterface $slugger)
+    public function __construct(SluggerInterface $slugger, string $targetDirectory)
     {
         $this->targetDirectory = $targetDirectory;
         $this->slugger = $slugger;

@@ -58,7 +58,7 @@ class EvenementType extends AbstractType
                             'image/png',
                             'image/jpeg',
                         ],
-                        'mimeTypesMessage' => 'Please upload a valid PDF document',
+                        'mimeTypesMessage' => 'Format d\'image non valide',
                     ])
                 ],
             ])
