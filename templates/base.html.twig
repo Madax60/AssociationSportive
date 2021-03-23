@@ -20,18 +20,28 @@
     {% endblock %}
 </head>
 {% block navigation %}
-    <header>
-        <div class="headerMain">
-            <div class="lineBtn">
-                <div class="sideLeft">
-                    <a href="{{ path('accueil') }}" class="settingBtn">logo</a>
-                    <a href="{{ path('accueil') }}"class="settingBtn">ACCUEIL</a>
-                </div>
-                <div class="d-flex flex-row sideRight">
-                    <span class="icons-iog">
-                       <a href=""><i class="far fa-id-card fa-2x"></i></a>
-                    </span>
-                    <a class="settingBtn" href="{{ path('app_login') }}">S'IDENTIFIER</a>
+    <header class="position-fixed w-100">
+        <div id="wrap">
+            <div class="headerMain">
+                <div class="px-5 py-4 d-flex">
+                    <div class="col-2">
+                        <a href="{{ path('accueil_index') }}" class="settingBtn">logo</a>
+                    </div>
+                    <div class="col d-flex justify-content-around text-center">
+                        <a href="{{ path('accueil_index') }}"class="settingBtn">Accueil</a>
+                        <a href="{{ path('evenement_index') }}"class="settingBtn">Evènement</a>
+                        <a href="{{ path('sport_index') }}"class="settingBtn">Sport</a>
+                        <a href="{{ path('type_index') }}"class="settingBtn">Type</a>
+                        <a href="{{ path('category_index') }}"class="settingBtn">Categorie</a>
+                        <a href="{{ path('eleve_index') }}"class="settingBtn">Elève</a>
+                    </div>
+                    <div class="col-2 offset-3 d-flex">
+                        <a class="settingBtn row" href="{{ path('app_login') }}">
+                            <div class="container d-flex position-absolute">
+                                <i class="far fa-id-card "></i><span class="ml-2">Se connecter</span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -47,50 +57,47 @@
         {% endblock %}
     </body>
 {% block footer %}
-    <footer>
-        <div class="footerMain">
-            <div class="container">
-                <div class="row">
+    <footer class="m-0" style="bottom: 0; left: 0; right: 0">
+        <div class="footerMain pb-5 w-100">
+            <div class="container-fluid m-auto w-75">
+                <div class="row ">
                     <!--La classe bg-info ajoute un fond bleu à l'élément-->
-                    <div class="col">
+                    <div class="col-10 col-sm-3 mx-auto ">
                         <ul>
-                            <li class="titreFooter">Association Sportive Saint-Vincent</li>
-                            <li><br></li>
-                            <li class="infoFooter"><a href="">30 rue de Meaux </a></li>
-                            <li class="infoFooter"><a href="">60300 Senlis </a></li>
-                            <li><br></li>
-                            <li class="infoFooter"><a href="">Association Saint-Vincent </a></li>
-                            <li class="infoFooter"><a href="">https://www.lycee-stvincent.fr/</a></li>
+                            <li><p class="text-light">Association Sportive Saint-Vincent</p></li>
+                            <li><a class="linkFoot" href="">30 rue de Meaux, </a></li>
+                            <li><a class="linkFoot" href="">60300 Senlis </a></li>
+                            <br>
+                            <li><p class="text-light">Association Saint-Vincent</p></li>
+                            <li><a class="linkFoot" href="">https://www.lycee-stvincent.fr/</a></li>
                         </ul>
 
                     </div>
 
-                    <div class="col">
+                    <div class="col-10 col-sm-4 mx-auto">
                         <ul>
-                            <li class="titreFooter">Nous contacter</li>
-                            <li><br></li>
-                            <li class="infoFooter"><a href=""> Tél: 03 66 66 66 66 </a></li>
-                            <li class="infoFooter"><a href="">Fax: 03 66 66 66 66 </a></li>
-                            <li class="infoFooter"><a href="">Email: contact@lyceestvincent.fr </a></li>
-                            <li class="infoFooter"><a href="">web: https://asso-sport.lyceestvincent.fr </a></li>
+                            <li><p class=" font-weight-bold text-light">Nous contacter</p></li>
+                            <li><a class="linkFoot" href=""> Tél: 03 66 66 66 66 </a></li>
+                            <li><a class="linkFoot" href="">Fax: 03 66 66 66 66 </a></li>
+                            <li><a class="linkFoot" href="">Email: contact@lyceestvincent.fr </a></li>
+                            <li><a class="linkFoot" href="">Web: https://asso-sport.lyceestvincent.fr </a></li>
                         </ul>
 
                     </div>
-                    <div class="col">
+                    <div class="col-10 col-sm-2 mx-auto">
                         <ul>
-                            <li class="titreFooter">Accès rapide</li>
-                            <li><br></li>
-                            <li class="infoFooter"><a href=""> >Accueil </a></li>
-                            <li class="infoFooter"><a href=""> >Actualités </a></li>
-                            <li class="infoFooter"><a href=""> >Événements </a></li>
-                            <li class="infoFooter"><a href=""> >Contact </a></li>
+                            <li><p class=" font-weight-bold text-light">Accès rapide</p></li>
+                            <li><a class="linkFoot" href=""> > Accueil</a></li>
+                            <li><a class="linkFoot" href=""> > Actualités</a></li>
+                            <li><a class="linkFoot" href=""> > Événements</a></li>
+                            <li><a class="linkFoot" href=""> > Contact</a></li>
                         </ul>
                     </div>
-                    <div class="col">
-                        <p class="titreFooter">Suivez-nous</p>
+                    <div class="col-10 col-sm-2 mx-auto">
+                        <p class="font-weight-bold text-light">Suivez-nous</p>
                         <span class="fa-cog">
-                            <a href=""><i class="fab fa-twitter-square fa-2x "></i></a>
-                            <a href=""><i class="fab fa-facebook-square fa-2x "></i></a>
+                            <a href="linkFoot"><i class="fab fa-twitter-square fa-2x "></i></a>
+                            <a href="linkFoot"><i class="fab fa-facebook-square fa-2x "></i></a>
                         </span>
 
                     </div>

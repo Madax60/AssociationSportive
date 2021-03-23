@@ -3,9 +3,16 @@
 {% block title %}Ajouter un évènement{% endblock %}
 
 {% block body %}
-    <h1>Ajouter un Evenement</h1>
+<div class="container minVhTheme mx-auto ptNav text-center">
 
-    {{ include('evenement/_form.html.twig') }}
+    <div class="m-3">
+        <a class="btn bg-primary px-3 py-2 rounded text-white" href="{{ path('evenement_index') }}"><i class="fas fa-arrow-left"></i> Retour à la liste</a>
+    </div>
 
-    <a href="{{ path('evenement_index') }}">Retour aux évènements</a>
+    <div class="container m-auto text-center ">
+        <h1 class="my-5">Ajouter un évènement</h1>
+
+        {{ include('evenement/_form.html.twig') }}
+    </div>
+</div>
 {% endblock %}

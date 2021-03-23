@@ -30,7 +30,7 @@ class EleveController extends AbstractController
      */
     public function new(Request $request): Response
     {
-        //On instancie un nouvel evenement
+        //On instancie un nouvel eleve
         $eleve = new Eleve();
         //Méthode qui génere le form
         $form = $this->createForm(EleveType::class, $eleve);
@@ -55,8 +55,8 @@ class EleveController extends AbstractController
      */
     public function show(Eleve $eleve): Response
     {
-        return $this->render('evenement/show.html.twig', [
-            'evenement' => $eleve,
+        return $this->render('eleve/show.html.twig', [
+            'eleve' => $eleve,
         ]);
     }
 
