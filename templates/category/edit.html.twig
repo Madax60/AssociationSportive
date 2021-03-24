@@ -3,16 +3,15 @@
 {% block title %}Categorie{% endblock %}
 
 {% block body %}
-    <div class="m-3">
-        <a class="btn bg-primary px-3 py-2 rounded text-white" href="{{ path('category_index') }}"><i class="fas fa-arrow-left"></i> Retour à la liste</a>
-    </div>
+<div class="container minVhTheme mx-auto ptNav text-center">
+
+
 
     <div class="container m-auto text-center">
+        <a class="btn bg-primary float-left px-3 py-2 rounded text-white" href="{{ path('category_index') }}"><i class="fas fa-arrow-left"></i> Retour à la liste</a>
         <h1 class="my-5">Categories</h1>
 
         {{ include('category/_form.html.twig', {'button_label': 'Modifier'}) }}
-
-        <a href="{{ path('category_index') }}">Retourner à la liste des categories</a>
     </div>
-
+</div>
 {% endblock %}

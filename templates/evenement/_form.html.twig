@@ -1,7 +1,45 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <div class="container my-5">
-        <button class="btn bg-primary px-3 py-2 rounded text-white">{{ button_label|default('Ajouter') }}</button>
-    </div>
+<table class="container d-flex m-auto text-center">
+    <tbody class=" m-auto">
+        <tr>
+            <td class="text-right">{{ form_label(form.nom) }}</td>
+            <td class="text-left">{{ form_widget(form.nom) }}</td>
+        </tr>
+        <tr>
+            <td class="text-right">{{ form_label(form.description) }}</td>
+            <td class="text-left">{{ form_widget(form.description) }}</td>
+
+        </tr>
+        <tr>
+            <td class="text-right">{{ form_label(form.date_debut) }}</td>
+            <td class="text-left">{{ form_widget(form.date_debut) }}</td>
+
+        </tr>
+        <tr>
+            <td class="text-right">{{ form_label(form.date_fin) }}</td>
+            <td class="text-left">{{ form_widget(form.date_fin) }}</td>
+
+        </tr>
+        <tr>
+            <td class="text-right">{{ form_label(form.archivee) }}</td>
+            <td class="text-left">{{ form_widget(form.archivee) }}</td>
+
+        </tr>
+        <tr>
+            <td class="text-right">{{ form_label(form.Category_id) }}</td>
+            <td class="text-left">{{ form_widget(form.Category_id) }}</td>
+        </tr>
+        <tr>
+            <td class="text-right">{{ form_label(form.Class_id) }}</td>
+            <td class="text-left">{{ form_widget(form.Class_id) }}</td>
+
+        </tr>
+    </tbody>
+
+</table>
+
+<div class="container my-5">
+    <button class="btn bg-primary px-3 py-2 rounded text-white">{{ button_label|default('Ajouter') }}</button>
+</div>
 
 {{ form_end(form) }}
