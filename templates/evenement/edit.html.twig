@@ -3,6 +3,8 @@
 {% block title %}Evènement{% endblock %}
 
 {% block body %}
+<div class="container minVhTheme mx-auto ptNav text-center">
+
     <div class="m-3">
         <a class="btn bg-primary px-3 py-2 rounded text-white" href="{{ path('evenement_index') }}"><i class="fas fa-arrow-left"></i> Retour à la liste</a>
     </div>
@@ -11,8 +13,6 @@
         <h1 class="my-5">évènement</h1>
 
         {{ include('evenement/_form.html.twig', {'button_label': 'Modifier'}) }}
-
-        <a href="{{ path('evenement_index') }}">Retourner à la liste des évènements</a>
     </div>
-
+</div>
 {% endblock %}

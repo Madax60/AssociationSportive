@@ -3,24 +3,24 @@
 {% block title %}Categorie{% endblock %}
 
 {% block body %}
+<div class="container minVhTheme mx-auto ptNav text-center">
+
     <h1 class="my-3 text-center">Liste des categories</h1>
 
-    <div class="container my-5">
-        <a class="bg-primary p-3 rounded text-white" href="{{ path('category_new') }}">Ajouter un categorie</a>
+    <div class="d-flex my-5">
+        <a class="btn bg-primary mr-auto rounded text-white" href="{{ path('category_new') }}">Ajouter une catégorie</a>
     </div>
 
-    <table class="container table">
+    <table class="table table-dark">
         <thead>
-            <tr class="row text-center">
-                <th class="col-1">Id</th>
+            <tr class="d-flex text-center">
                 <th class="col">Nom de la catégorie</th>
                 <th class="col-2">Action</th>
             </tr>
         </thead>
         <tbody>
         {% for category in categorys %}
-            <tr class="row text-center">
-                <td class="col-1">{{ category.id }}</td>
+            <tr class="d-flex text-center">
                 <td class="col">{{ category.nom }}</td>
                 <td class="col-2">
                     <a href="{{ path('category_show', {'id': category.id}) }}"><i style="font-size: 24px" class="fas fa-eye"></i></a>
@@ -35,5 +35,5 @@
         {% endfor %}
         </tbody>
     </table>
-
+</div>
 {% endblock %}

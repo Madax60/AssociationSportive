@@ -5,6 +5,7 @@
         "This file is @generated automatically"
     ],
     "content-hash": "65b9c01b27d9d7f6fda8fb39fb8b7a13",
+
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -8302,5 +8303,5 @@
         "ext-iconv": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }

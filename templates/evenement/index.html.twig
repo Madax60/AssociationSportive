@@ -3,36 +3,26 @@
 {% block title %}Evènement{% endblock %}
 
 {% block body %}
+<div class="container minVhTheme mx-auto ptNav text-center">
+
     <h1 class="my-3 text-center">Liste des évènements</h1>
 
-    <div class="container my-5">
-        <a class="bg-primary p-3 rounded text-white" href="{{ path('evenement_new') }}">Ajouter un évènement</a>
+    <div class="d-flex my-5">
+        <a class="btn bg-primary mr-auto rounded text-white" href="{{ path('evenement_new') }}">Ajouter un évènement</a>
     </div>
 
-    <table class="container table">
+    <table class="table table-dark">
         <thead>
-            <tr class="row text-center">
-                <th class="col">Nom du sport</th>
-                <th class="col">Nom du type</th>
-                <th class="col">Nom de la catégorie</th>
-                <th class="col">Nom de l'évènement</th>
-                <th class="col">Description</th>
-                <th class="col">Date de debut</th>
-                <th class="col">Nombre de places</th>
-                <th class="col">Image</th>
-                <th class="col">Vignette</th>
-                <th class="col">Duree</th>
-                <th class="col">Date de fin</th>
+            <tr class="d-flex text-center">
+                <th class="col">Nom</th>
+                <th class="col-8">Description</th>
                 <th class="col-2">Action</th>
             </tr>
         </thead>
         <tbody>
         
         {% for evenement in evenements %}
-            <tr class="row text-center">
-                <td class="col">{{ evenement.sport }}</td>
-                <td class="col">{{ evenement.type }}</td>
-                <td class="col">{{ evenement.category }}</td>
+            <tr class="d-flex text-center">
                 <td class="col">{{ evenement.nom }}</td>
                 <td class="col">{{ evenement.description }}</td>
                 <td class="col">{{ evenement.GetDateDebut|date("m/d/Y", "Europe/Paris") }}</td>
@@ -57,5 +47,5 @@
         {% endfor %}
         </tbody>
     </table>
-
+</div>
 {% endblock %}

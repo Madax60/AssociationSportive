@@ -1,7 +1,17 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <div class="container my-5">
-        <button class="btn bg-primary px-3 py-2 rounded text-white">{{ button_label|default('Ajouter') }}</button>
-    </div>
+<table class="container d-flex m-auto text-center">
+    <tbody class=" m-auto">
+        <tr>
+            <td class="text-right">{{ form_label(form.nom) }}</td>
+            <td class="text-left">{{ form_widget(form.nom) }}</td>
+
+        </tr>
+    </tbody>
+
+</table>
+
+<div class="container my-5">
+    <button class="btn bg-primary px-3 py-2 rounded text-white">{{ button_label|default('Ajouter') }}</button>
+</div>
 
 {{ form_end(form) }}

@@ -3,6 +3,8 @@
 {% block title %}Sport{% endblock %}
 
 {% block body %}
+<div class="container minVhTheme mx-auto ptNav text-center">
+
     <div class="m-3">
         <a class="btn bg-primary px-3 py-2 rounded text-white" href="{{ path('sport_index') }}"><i class="fas fa-arrow-left"></i> Retour à la liste</a>
     </div>
@@ -11,8 +13,6 @@
         <h1 class="my-5">Sport</h1>
 
         {{ include('sport/_form.html.twig', {'button_label': 'Modifier'}) }}
-
-        <a href="{{ path('sport_index') }}">Retourner à la liste des sports</a>
     </div>
-
+</div>
 {% endblock %}

@@ -3,9 +3,9 @@
 {% block title %}Connexion{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <div class="row">
-            <div class="col">
+    <div class="container d-flex minVhTheme m-auto">
+        <div class="bg-theme-blue d-flex m-auto px-4 py-5 rounded-theme">
+            <div class="col-10 col-sm-6 d-flex mx-auto">
                 {% for message in app.flashes('success') %}
                     <div class="alert alert-success">
                         {{message}}
@@ -22,10 +22,10 @@
                         </div>
                     {% endif %}
 
-                    <h2 class="h3 mb-3 font-weight-normal">Connectez-vous</h2>
-                    <label for="inputEmail">Email</label>
+                    <h3 class="mb-3 text-theme-white">Connectez-vous</h3>
+                    <label class=" text-theme-white" for="inputEmail">Email</label>
                     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
-                    <label for="inputPassword">Mot de passe </label>
+                    <label class=" text-theme-white" for="inputPassword">Mot de passe </label>
                     <input type="password" name="password" id="inputPassword" class="form-control" required>
 
                     <input type="hidden" name="_csrf_token"
@@ -42,19 +42,19 @@
                         </label>
                     </div>
                     #}
-
-                    <button class="btn btn-lg btn-success mt-3" type="submit">
+                    <a class="" href="{{ path('contact') }}">Mot de passe oublié ?</a>
+                    <br>
+                    <button class="btn btn-primary d-flex mt-3 mx-auto" type="submit">
                         Connexion
                     </button>
 
-                    <a class="mx-auto" href="{{ path('contact') }}">Mot de passe oublié ?</a>
                 </form>
             </div>
-            <div class="col-6 rightLogin">
-                <h2>Pas encore de compte ?</h2>
-                <p>Vous êtes étudiant et vous n'avez pas encore de compte sur la platforme ?</p>
+            <div class="col-10 col-sm-5">
+                <h3 class="mb-4 text-theme-white">Pas encore de compte ?</h3>
+                <p class="text-theme-white">Vous êtes étudiant et vous n'avez pas encore de compte sur la plateforme ?</p>
                 <div>
-                    <button class="btnInscription">Accèder au formulaire d'inscription</button>
+                    <button class="btn btn-primary d-flex mx-auto">S'insrire</button>
                 </div>
             </div>
         </div>
