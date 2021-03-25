@@ -54,8 +54,9 @@ class EvenementController extends AbstractController
                 $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
                 // this is needed to safely include the file name as part of the URL
                 $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$brochureFile->guessExtension();
-
+                //$ext_pos = strrpos($safeFilename, '.');
+                $newFilename = $safeFilename.'.'.$brochureFile->guessExtension();
+                //$newFilename = substr($safeFilename, 0, $ext_pos) . '_min' . substr($safeFilename, $ext_pos);;
                 // Move the file to the directory where brochures are stored
                 try {
                     $brochureFile->move(
