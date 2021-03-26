@@ -42,7 +42,6 @@ class EvenementController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-             /** @var UploadedFile $brochureFile */
             $brochure = $form->get('brochure')->getData();
             $fichier = md5(uniqid()) . '.' . $brochure->guessExtension();
 
@@ -89,6 +88,20 @@ class EvenementController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $brochure = $form->get('brochure')->getData();
+            $fichier = md5(uniqid()) . '.' . $brochure->guessExtension();
+
+            //On copie le fichier dans le dossier upload
+            $brochure->move(
+                $this->getParameter('brochures_directory'),
+                $fichier
+            );
+
+            //On va stocker l'image dans la BDD (son nom car déjà
+            //stocker dans le projet)
+            $evenement->setBrochureFilename($fichier);
+            $evenement->getBrochureFilename($evenement);
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('evenement_index');
@@ -114,5 +127,4 @@ class EvenementController extends AbstractController
         // return new Response('SUPPRESSION');
         return $this->redirectToRoute('evenement_index');
     }
-    
 }
