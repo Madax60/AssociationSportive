@@ -43,34 +43,19 @@ class EvenementController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
              /** @var UploadedFile $brochureFile */
-             $brochureFile = $form->get('brochure')->getData();
-            if ($brochureFile) {
-                $brochureFileName = $fileUploader->upload($brochureFile);
-                $evenement->setBrochureFilename($brochureFileName);
-            }
-            // this condition is needed because the 'brochure' field is not required
-            // so the PDF file must be processed only when a file is uploaded
-            if ($brochureFile) {
-                $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
-                // this is needed to safely include the file name as part of the URL
-                $safeFilename = $slugger->slug($originalFilename);
-                //$ext_pos = strrpos($safeFilename, '.');
-                $newFilename = $safeFilename.'.'.$brochureFile->guessExtension();
-                //$newFilename = substr($safeFilename, 0, $ext_pos) . '_min' . substr($safeFilename, $ext_pos);;
-                // Move the file to the directory where brochures are stored
-                try {
-                    $brochureFile->move(
-                        $this->getParameter('brochures_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
-                }
+            $brochure = $form->get('brochure')->getData();
+            $fichier = md5(uniqid()) . '.' . $brochure->guessExtension();
 
-                // updates the 'brochureFilename' property to store the PDF file name
-                // instead of its contents
-                $evenement->setBrochureFilename($newFilename);
-            }
+            //On copie le fichier dans le dossier upload
+            $brochure->move(
+                $this->getParameter('brochures_directory'),
+                $fichier
+            );
+
+            //On va stocker l'image dans la BDD (son nom car déjà
+            //stocker dans le projet)
+            $evenement->setBrochureFilename($fichier);
+            $evenement->getBrochureFilename($evenement);
             
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($evenement);
