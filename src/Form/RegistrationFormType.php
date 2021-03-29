@@ -21,9 +21,7 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('roles', HiddenType::class, [
-                'data' => 'abcdef',
-            ])
+            ->add('roles')
             ->add('agreeTerms', CheckboxType::class, [
                 'label' => 'Accepter les termes',
                 'mapped' => false,
