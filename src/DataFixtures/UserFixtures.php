@@ -23,6 +23,15 @@ final class UserFixtures extends Fixture
             User::ROLE_USER,
             User::ROLE_ADMIN,
         ];
+        $userAdmin = new User();
+        $password = '123';
+        $userAdmin
+            ->setEmail('user-Z@gmail.com')
+            ->setRoles(array('ROLES_ADMIN'));
+
+            // Encode le mot de passe et l'insère dans le champ "password".
+            $userAdmin->setPassword($this->encoder->encodePassword($userAdmin, $password));
+            $manager->persist($userAdmin);
 
         for ($i = 1; $i < 10; $i++) {
             $user = new User();
