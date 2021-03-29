@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=EleveRepository::class)
  */
-class Eleve
+class Eleve extends User
 {
     /**
      * @ORM\Id
@@ -57,6 +57,12 @@ class Eleve
      * @ORM\JoinColumn(nullable=false)
      */
     private $classe;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="eleves")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
 
     public function getId(): ?int
     {
@@ -155,6 +161,18 @@ class Eleve
     public function setClasse(?Classe $classe): self
     {
         $this->classe = $classe;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

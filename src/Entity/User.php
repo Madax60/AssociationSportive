@@ -52,8 +52,6 @@ class User implements UserInterface
      */
     private $isVerified = false;
 
-
-
     public function __construct()
     {
         $this->evenement = new ArrayCollection();
