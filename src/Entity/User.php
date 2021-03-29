@@ -52,9 +52,15 @@ class User implements UserInterface
      */
     private $isVerified = false;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Eleve::class, mappedBy="user")
+     */
+    private $eleve;
+
     public function __construct()
     {
         $this->evenement = new ArrayCollection();
+        $this->eleve = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -175,6 +181,36 @@ class User implements UserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Eleve[]
+     */
+    public function getEleve(): Collection
+    {
+        return $this->eleve;
+    }
+
+    public function addEleve(Eleve $eleve): self
+    {
+        if (!$this->eleve->contains($eleve)) {
+            $this->eleve[] = $eleve;
+            $eleve->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEleve(Eleve $eleve): self
+    {
+        if ($this->eleve->removeElement($eleve)) {
+            // set the owning side to null (unless already changed)
+            if ($eleve->getUser() === $this) {
+                $eleve->setUser(null);
+            }
+        }
 
         return $this;
     }

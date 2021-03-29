@@ -17,7 +17,7 @@ class EleveType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Category_id', EntityType::class, [
+            ->add('Category', EntityType::class, [
                 'class' => Category::class,
                 'placeholder' => 'Sélectionnez la categorie',
                 'required' => true,
@@ -37,7 +37,7 @@ class EleveType extends AbstractType
                     'Non' => 0,
                 ],
             ])
-            ->add('Class_id', EntityType::class, [
+            ->add('Classe', EntityType::class, [
                 'class' => Classe::class,
                 'placeholder' => 'Sélectionnez la classe',
                 'required' => true,

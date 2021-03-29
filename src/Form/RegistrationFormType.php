@@ -8,6 +8,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,8 +22,12 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email')
-
+            ->add('email', EmailType::class, [
+                'required' => true
+            ])
+            // ->add('eleve', EntityType::class, [
+            // 'class' => Eleve::class,
+            // ])
             ->add('roles', ChoiceType::class, [
                 'choices' => [
                     'Utilisateur' => 'ROLE_USER',
@@ -31,7 +36,8 @@ class RegistrationFormType extends AbstractType
                 ],
                 'expanded' => true,
                 'multiple' => true,
-                'label' => 'Rôles' 
+                'label' => 'Rôles',
+                'required' => true
             ])
 
             ->add('agreeTerms', CheckboxType::class, [
@@ -45,6 +51,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('plainPassword', PasswordType::class, [
                 'label' => 'Mot de passe',
+                'required' => true,
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank([
