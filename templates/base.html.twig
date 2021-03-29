@@ -24,37 +24,41 @@
             <div class="headerMain">
                 <div class="px-5 py-4 d-flex">
                     <div class="col-2">
-                        <a href="{{ path('accueil') }}" class="settingBtn">logo</a>
+                        <a href="{{ path('accueil') }}" class="settingBtn"><img
+                                    src="https://www.lycee-stvincent.fr/themes/saint_vincent/images/logo.png"
+                                    style="width: 25%" alt=""></a>
+                        <a href="{{ path('accueil') }}" class="settingBtn ml-4">Accueil</a>
+
                     </div>
-                    <div class="col d-flex justify-content-around text-left">
-                        <a href="{{ path('accueil') }}"class="settingBtn">Accueil</a>
+                    <div class="col d-flex justify-content-around text-left my-auto">
+
                         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                             {% if is_granted('ROLE_ADMIN') %}
-                                <a href="{{ path('evenement_index') }}"class="settingBtn">Evènement</a>
-                                <a href="{{ path('sport_index') }}"class="settingBtn">Sport</a>
-                                <a href="{{ path('type_index') }}"class="settingBtn">Type</a>
-                                <a href="{{ path('category_index') }}"class="settingBtn">Categorie</a>
-                                <a href="{{ path('eleve_index') }}"class="settingBtn">Elève</a>
+                                <a href="{{ path('evenement_index') }}" class="settingBtn">Evènement</a>
+                                <a href="{{ path('sport_index') }}" class="settingBtn">Sport</a>
+                                <a href="{{ path('type_index') }}" class="settingBtn">Type</a>
+                                <a href="{{ path('category_index') }}" class="settingBtn">Categorie</a>
+                                <a href="{{ path('eleve_index') }}" class="settingBtn">Elève</a>
+
                             {% endif %}
                         {% endif %}
                     </div>
-                    <div class="col-2 offset-3 d-flex">
-                        <a class="settingBtn row" href="{{ path('app_login') }}">
-                            <div class="container d-flex position-absolute">
-                                {% if is_granted('IS_ANONYMOUS') %}
-                                    <i class="far fa-id-card "></i><span class="ml-2">Se connecter</span>
-                                {% endif %}
+                    <div class="col d-flex justify-content-end text-left">
+                        <a class="my-auto" href="{{ path('app_login') }}">
 
-                                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                                    <a class="settingBtn row" href="{{ path('app_login') }}">
-                                        <div class="col-3">
-                                            <i class="far fa-id-card fa-2x "></i>
-                                        </div>
-                                    </a>
-                                    <li><a href="logout">Déconnexion</a></li>
-                                {% endif %}
-                            </div>
+                            {% if is_granted('IS_ANONYMOUS') %}
+                                <span class="ml-2 my-auto'">Se connecter</span>
+                            {% endif %}
                         </a>
+                        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                            <a class="settingBtn row" href="{{ path('app_login') }}">
+                                <div class="col-3">
+                                    <i class="far fa-id-card fa-2x "></i>
+                                </div>
+                            </a>
+                            <a href="logout" class="my-auto ml-4">Déconnexion</a>
+                        {% endif %}
+
                     </div>
                 </div>
             </div>
@@ -62,14 +66,14 @@
     </header>
 {% endblock %}
 
-    <body>
-        {% block body %}
-        {% endblock %}
+<body>
+{% block body %}
+{% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </body>
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+</body>
 {% block footer %}
     <footer class="m-0" style="bottom: 0; left: 0; right: 0">
         <div class="footerMain pb-5 w-100">
