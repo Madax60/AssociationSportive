@@ -2,16 +2,21 @@
 
 namespace App\Controller;
 
+use App\Service\FileUploader;
 use App\Entity\Evenement;
 use App\Form\EvenementType;
 use App\Repository\EvenementRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
- * @Route("/evenement")
+ * @Route("/admin/evenement")
  */
 class EvenementController extends AbstractController
 {
@@ -28,7 +33,7 @@ class EvenementController extends AbstractController
     /**
      * @Route("/new", name="evenement_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, SluggerInterface $slugger, FileUploader $fileUploader): Response
     {
         //On instancie un nouvel evenement
         $evenement = new Evenement();
@@ -37,7 +42,20 @@ class EvenementController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // dd($form);
+            $brochure = $form->get('brochure')->getData();
+            $fichier = md5(uniqid()) . '.' . $brochure->guessExtension();
+
+            //On copie le fichier dans le dossier upload
+            $brochure->move(
+                $this->getParameter('brochures_directory'),
+                $fichier
+            );
+
+            //On va stocker l'image dans la BDD (son nom car déjà
+            //stocker dans le projet)
+            $evenement->setBrochureFilename($fichier);
+            $evenement->getBrochureFilename($evenement);
+            
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($evenement);
             $entityManager->flush();
@@ -70,6 +88,20 @@ class EvenementController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $brochure = $form->get('brochure')->getData();
+            $fichier = md5(uniqid()) . '.' . $brochure->guessExtension();
+
+            //On copie le fichier dans le dossier upload
+            $brochure->move(
+                $this->getParameter('brochures_directory'),
+                $fichier
+            );
+
+            //On va stocker l'image dans la BDD (son nom car déjà
+            //stocker dans le projet)
+            $evenement->setBrochureFilename($fichier);
+            $evenement->getBrochureFilename($evenement);
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('evenement_index');
@@ -86,12 +118,13 @@ class EvenementController extends AbstractController
      */
     public function delete(Request $request, Evenement $evenement): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$evenement->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($evenement);
-            $entityManager->flush();
-        }
-
+        // if ($this->isCsrfTokenValid('delete'.$evenement->getId(), $request->request->get('_token'))) {
+        $entityManager = $this->getDoctrine()->getManager();
+        //     $entityManager->remove($evenement);
+        //     $entityManager->flush();
+        $entityManager->remove($evenement);
+        $entityManager->flush();
+        // return new Response('SUPPRESSION');
         return $this->redirectToRoute('evenement_index');
     }
 }

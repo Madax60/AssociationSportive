@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="c71e2e9c-ba51-48f9-803e-d73ce1322355" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Controller/EleveController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-    </list>
-=======
     <list default="true" id="c71e2e9c-ba51-48f9-803e-d73ce1322355" name="Default Changelist" comment="" />
->>>>>>> 87d86548077705997df444dfbc269bc99c93dab2
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -152,15 +143,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Form" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
-=======
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
->>>>>>> 87d86548077705997df444dfbc269bc99c93dab2
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -179,36 +164,12 @@
       <workItem from="1615190881092" duration="69000" />
       <workItem from="1615191671823" duration="34000" />
       <workItem from="1615382550850" duration="20218000" />
-<<<<<<< HEAD
-      <workItem from="1615451053473" duration="176000" />
-      <workItem from="1615451240129" duration="675000" />
-      <workItem from="1615457666112" duration="258000" />
-      <workItem from="1615460179094" duration="369000" />
-      <workItem from="1615460552182" duration="1263000" />
-      <workItem from="1615539978258" duration="560000" />
-      <workItem from="1616418282562" duration="684000" />
-      <workItem from="1616419059406" duration="2656000" />
-=======
->>>>>>> 87d86548077705997df444dfbc269bc99c93dab2
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-<<<<<<< HEAD
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-=======
   <component name="WindowStateProjectService">
     <state x="617" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1615416651660">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -222,6 +183,5 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/1920.0.1080.1880@0.0.1920.1040" timestamp="1615416111742" />
->>>>>>> 87d86548077705997df444dfbc269bc99c93dab2
   </component>
 </project>
