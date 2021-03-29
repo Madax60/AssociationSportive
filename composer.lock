@@ -5911,6 +5911,9 @@
                 "limiter",
                 "rate-limiter"
             ],
+            "support": {
+                "source": "https://github.com/symfony/rate-limiter/tree/v5.2.6"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -8492,5 +8495,5 @@
         "ext-iconv": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }
