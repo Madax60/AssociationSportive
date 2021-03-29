@@ -27,7 +27,7 @@ final class UserFixtures extends Fixture
         $password = '123';
         $userAdmin
             ->setEmail('user-A@gmail.com')
-            ->setRoles(array('ROLES_ADMIN'));
+            ->setRoles(array('ROLE_ADMIN'));
 
             // Encode le mot de passe et l'insère dans le champ "password".
             $userAdmin->setPassword($this->encoder->encodePassword($userAdmin, $password));
@@ -37,7 +37,7 @@ final class UserFixtures extends Fixture
         $password = '123';
         $userUser
             ->setEmail('user-U@gmail.com')
-            ->setRoles(array('ROLES_USER'));
+            ->setRoles(array('ROLE_USER'));
 
             // Encode le mot de passe et l'insère dans le champ "password".
             $userUser->setPassword($this->encoder->encodePassword($userUser, $password));
