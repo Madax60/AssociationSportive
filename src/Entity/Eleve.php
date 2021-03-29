@@ -18,11 +18,6 @@ class Eleve
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $Category_id;
-
-    /**
      * @ORM\Column(type="date")
      */
     private $date_naissance;
@@ -58,25 +53,14 @@ class Eleve
     private $archivee;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=Classe::class, inversedBy="eleves")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $Class_id;
+    private $classe;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getCategoryId(): ?int
-    {
-        return $this->Category_id;
-    }
-
-    public function setCategoryId(int $Category_id): self
-    {
-        $this->Category_id = $Category_id;
-
-        return $this;
     }
 
     public function getDateNaissance(): ?\DateTimeInterface
@@ -163,14 +147,14 @@ class Eleve
         return $this;
     }
 
-    public function getClassId(): ?int
+    public function getClasse(): ?Classe
     {
-        return $this->Class_id;
+        return $this->classe;
     }
 
-    public function setClassId(int $Class_id): self
+    public function setClasse(?Classe $classe): self
     {
-        $this->Class_id = $Class_id;
+        $this->classe = $classe;
 
         return $this;
     }
