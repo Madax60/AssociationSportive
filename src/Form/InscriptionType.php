@@ -4,12 +4,11 @@ namespace App\Form;
 
 use App\Entity\Category;
 use App\Entity\Eleve;
-use DateTime;
+use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -36,8 +35,6 @@ class InscriptionType extends AbstractType
         ->add('genre', TextType::class, [
             'label' => 'Sexe'
         ])
-        ->add('date_creation')
-        ->add('date_maj')
         ->add('Category', EntityType::class, [
             'class' => Category::class,
             'placeholder' => 'Sélectionnez la catégorie',

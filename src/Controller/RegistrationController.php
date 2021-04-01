@@ -3,9 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Eleve;
-use App\Entity\User;
 use App\Form\InscriptionType;
-use App\Form\RegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
