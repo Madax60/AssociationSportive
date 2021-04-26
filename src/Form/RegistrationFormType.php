@@ -32,9 +32,13 @@ class InscriptionType extends AbstractType
             'required' => true
         ])
         ->add('date_naissance')
-        ->add('genre', TextType::class, [
-            'label' => 'Sexe'
-        ])
+        ->add('genre', ChoiceType::class, array(
+            'choices'=> array(
+                'Homme'=>'Homme',
+                'Femme'=>'Femme'
+            )
+        ))
+
         ->add('Category', EntityType::class, [
             'class' => Category::class,
             'placeholder' => 'Sélectionnez la catégorie',
@@ -42,7 +46,6 @@ class InscriptionType extends AbstractType
         ->add('roles', ChoiceType::class, [
             'choices' => [
                 'Utilisateur' => 'ROLE_USER',
-                'Editeur' => 'ROLE_EDITOR',
                 'Administrateur' => 'ROLE_ADMIN'
             ],
             'expanded' => true,
