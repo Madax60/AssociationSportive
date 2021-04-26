@@ -78,6 +78,7 @@ class InscriptionType extends AbstractType
                 ]),
             ],
         ])
+
         ;
     }
 
