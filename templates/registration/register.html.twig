@@ -12,16 +12,21 @@
         <div class="container m-auto text-center ">
             <div class="m-3 testEt">
                 <h2>Enregistrez-vous</h2>
-                {{ form_start(registrationForm) }}
-                {{ form_row(registrationForm.email) }}
-                {{ form_row(registrationForm.plainPassword) }}
-                {{ form_row(registrationForm.agreeTerms) }}
+                {{ form_start(InscriptionType) }}
+                {{ form_row(InscriptionType.email) }}
+                {{ form_row(InscriptionType.Prenom) }}
+                {{ form_row(InscriptionType.Nom) }}
+                {{ form_row(InscriptionType.genre) }}
+                {{ form_row(InscriptionType.date_naissance) }}
+                {{ form_row(InscriptionType.Category) }}
+                {{ form_row(InscriptionType.plainPassword) }}
+                {{ form_row(InscriptionType.agreeTerms) }}
                 <div class="invisible">
-                    {{ form_row(registrationForm.roles) }}
+                    {{ form_row(InscriptionType.roles) }}
                 </div>
                 <a class="btn bg-primary px-3 py-2 rounded text-white" href="{{ path('app_login') }}"><i class="fas fa-arrow-left"></i> Retour</a>
                 <button type="submit" class="btn bg-primary px-3 py-2 rounded text-white">S'enregistrer</button>
-            {{ form_end(registrationForm) }}
+            {{ form_end(InscriptionType) }}
             </div>
         </div>
     </div>

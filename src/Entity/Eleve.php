@@ -4,23 +4,27 @@ namespace App\Entity;
 
 use App\Repository\EleveRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * @ORM\Entity(repositoryClass=EleveRepository::class)
  */
-class Eleve
+class Eleve extends User
 {
+
+    /**
+     * Hook timestampable behavior
+     * updates createdAt, updatedAt fields
+     */
+    use TimestampableEntity;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $Category_id;
 
     /**
      * @ORM\Column(type="date")
@@ -43,11 +47,13 @@ class Eleve
     private $genre;
 
     /**
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      */
     private $date_creation;
 
     /**
+     * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime")
      */
     private $date_maj;
@@ -58,25 +64,26 @@ class Eleve
     private $archivee;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=Classe::class, inversedBy="eleves")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $Class_id;
+    private $classe;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="eleves")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="eleve")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getCategoryId(): ?int
-    {
-        return $this->Category_id;
-    }
-
-    public function setCategoryId(int $Category_id): self
-    {
-        $this->Category_id = $Category_id;
-
-        return $this;
     }
 
     public function getDateNaissance(): ?\DateTimeInterface
@@ -163,14 +170,38 @@ class Eleve
         return $this;
     }
 
-    public function getClassId(): ?int
+    public function getClasse(): ?Classe
     {
-        return $this->Class_id;
+        return $this->classe;
     }
 
-    public function setClassId(int $Class_id): self
+    public function setClasse(?Classe $classe): self
     {
-        $this->Class_id = $Class_id;
+        $this->classe = $classe;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
