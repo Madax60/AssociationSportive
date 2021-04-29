@@ -15,7 +15,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
-    const ROLE_EDITOR = "ROLE_EDITOR";
     const ROLE_USER = "ROLE_USER";
     const ROLE_ADMIN = "ROLE_ADMIN";
 
@@ -51,11 +50,6 @@ class User implements UserInterface
      * @ORM\Column(type="boolean")
      */
     private $isVerified = false;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Eleve::class, mappedBy="user")
-     */
-    private $eleve;
 
     public function __construct()
     {
@@ -185,33 +179,4 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|Eleve[]
-     */
-    public function getEleve(): Collection
-    {
-        return $this->eleve;
-    }
-
-    public function addEleve(Eleve $eleve): self
-    {
-        if (!$this->eleve->contains($eleve)) {
-            $this->eleve[] = $eleve;
-            $eleve->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeEleve(Eleve $eleve): self
-    {
-        if ($this->eleve->removeElement($eleve)) {
-            // set the owning side to null (unless already changed)
-            if ($eleve->getUser() === $this) {
-                $eleve->setUser(null);
-            }
-        }
-
-        return $this;
-    }
 }

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Eleve;
+use App\Entity\User;
 use App\Form\InscriptionType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,12 +18,13 @@ class RegistrationController extends AbstractController
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
-        $user = new Eleve();
-        $form = $this->createForm(InscriptionType::class, $user);
+        $eleve = new Eleve();
+        $user = new User();
+        $form = $this->createForm(InscriptionType::class,[$user, $eleve]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            //dd($form);
+            dd($form);
             // encode the plain password
             $user->setPassword(
                 $passwordEncoder->encodePassword(
@@ -32,7 +34,7 @@ class RegistrationController extends AbstractController
             );
 
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
+            $entityManager->persist($user, $eleve);
             $entityManager->flush();
             // do anything else you need here, like send an email
 

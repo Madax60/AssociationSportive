@@ -4,7 +4,7 @@ namespace App\Form;
 
 use App\Entity\Category;
 use App\Entity\Eleve;
-use App\Entity\User;
+// use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -31,14 +31,13 @@ class InscriptionType extends AbstractType
         ->add('Nom', TextType::class, [
             'required' => true
         ])
-        ->add('date_naissance')
+        ->add('date_naissance', DateType::class)
         ->add('genre', ChoiceType::class, array(
             'choices'=> array(
                 'Homme'=>'Homme',
                 'Femme'=>'Femme'
             )
         ))
-
         ->add('Category', EntityType::class, [
             'class' => Category::class,
             'placeholder' => 'Sélectionnez la catégorie',
@@ -53,8 +52,10 @@ class InscriptionType extends AbstractType
             'label' => 'Rôles',
             'required' => true
         ])
-        ->add('email', EmailType::class, [
+        ->add('email', TextType::class, [
+            // 'class' => User::class,
             'required' => true
+
         ])
         ->add('plainPassword', PasswordType::class, [
             'label' => 'Mot de passe',
@@ -88,7 +89,7 @@ class InscriptionType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Eleve::class,
+            'data_class' => null,
         ]);
     }
 }
