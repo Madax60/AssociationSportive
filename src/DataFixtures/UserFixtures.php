@@ -2,7 +2,6 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Category;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -32,7 +31,6 @@ final class UserFixtures extends Fixture
             ->setPrenom('Admin')
             ->setGenre('Homme')
             ->setDateNaissance(new \DateTime('12/05/1999'))
-            ->setArchivee(0)
             ->setCategory($this->getReference('Categ-1'))
             ->setClasse($this->getReference('Classe-1'));
 
@@ -50,7 +48,6 @@ final class UserFixtures extends Fixture
             ->setPrenom('User')
             ->setGenre('Femme')
             ->setDateNaissance(new \DateTime('12/05/1998'))
-            ->setArchivee(0)
             ->setCategory($this->getReference('Categ-1'))
             ->setClasse($this->getReference('Classe-1'));
 
@@ -70,7 +67,6 @@ final class UserFixtures extends Fixture
                 ->setPrenom('Random')
                 ->setGenre('Homme')
                 ->setDateNaissance(new \DateTime('12/05/1997'))
-                ->setArchivee(1)
                 ->setCategory($this->getReference('Categ-1'))
                 ->setClasse($this->getReference('Classe-1'));
 
