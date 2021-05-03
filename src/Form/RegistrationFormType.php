@@ -3,8 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Category;
-use App\Entity\Eleve;
-// use App\Entity\User;
+use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -52,7 +51,7 @@ class InscriptionType extends AbstractType
             'label' => 'Rôles',
             'required' => true
         ])
-        ->add('email', TextType::class, [
+        ->add('email', EmailType::class, [
             // 'class' => User::class,
             'required' => true
 
@@ -89,7 +88,7 @@ class InscriptionType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => null,
+            'data_class' => User::class,
         ]);
     }
 }
