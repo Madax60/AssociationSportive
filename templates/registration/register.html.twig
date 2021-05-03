@@ -18,12 +18,13 @@
                     label: 'Password'
                 }) }}
                 {{ form_row(registrationForm.genre) }}
+                {{ form_row(registrationForm.roles) }}
                 {{ form_row(registrationForm.Classe) }}
                 {{ form_row(registrationForm.Category) }}
                 {{ form_row(registrationForm.date_naissance) }}
                 {{ form_row(registrationForm.agreeTerms) }}
 
-                <button type="submit" class="btn">Register</button>
+                <button type="submit" class="btn">S'enregistrer</button>
             {{ form_end(registrationForm) }}
         </div>
     </div>

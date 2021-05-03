@@ -7,6 +7,7 @@ use App\Entity\User;
 use App\Entity\Category;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -33,7 +34,17 @@ class RegistrationFormType extends AbstractType
                     'Femme' => 'Femme',
                 ]
             ])
-            ->add('date_naissance', DateType::class)
+            ->add('date_naissance', BirthdayType::class)
+            ->add('roles', ChoiceType::class, [
+                'choices' => [
+                    'Eleve' => 'ROLE_USER',
+                    'Administrateur' => 'ROLE_ADMIN'
+                ],
+                'expanded' => true,
+                'multiple' => true,
+                'label' => 'Rôles',
+                'required' => true
+            ])
             ->add('Category', EntityType::class, [
                 'class' => Category::class,
                 'placeholder' => 'Sélectionnez la catégorie',
