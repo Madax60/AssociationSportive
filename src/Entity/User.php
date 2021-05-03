@@ -86,7 +86,6 @@ class User implements UserInterface
     public function __construct()
     {
         $this->evenement = new ArrayCollection();
-        $this->eleve = new ArrayCollection();
     }
 
     public function getId(): ?int
