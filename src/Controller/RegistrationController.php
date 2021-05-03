@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Eleve;
 use App\Entity\User;
 use App\Form\InscriptionType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,9 +17,8 @@ class RegistrationController extends AbstractController
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
-        $eleve = new Eleve();
         $user = new User();
-        $form = $this->createForm(InscriptionType::class,[$user, $eleve]);
+        $form = $this->createForm(InscriptionType::class,[$user]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -34,7 +32,7 @@ class RegistrationController extends AbstractController
             );
 
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user, $eleve);
+            $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
 

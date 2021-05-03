@@ -29,11 +29,6 @@ class Category
      */
     private $evenements;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Eleve::class, mappedBy="category")
-     */
-    private $eleves;
-
     public function __construct()
     {
         $this->evenements = new ArrayCollection();
@@ -85,36 +80,6 @@ class Category
             // set the owning side to null (unless already changed)
             if ($evenement->getCategory() === $this) {
                 $evenement->setCategory(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Eleve[]
-     */
-    public function getEleves(): Collection
-    {
-        return $this->eleves;
-    }
-
-    public function addElefe(Eleve $elefe): self
-    {
-        if (!$this->eleves->contains($elefe)) {
-            $this->eleves[] = $elefe;
-            $elefe->setCategory($this);
-        }
-
-        return $this;
-    }
-
-    public function removeElefe(Eleve $elefe): self
-    {
-        if ($this->eleves->removeElement($elefe)) {
-            // set the owning side to null (unless already changed)
-            if ($elefe->getCategory() === $this) {
-                $elefe->setCategory(null);
             }
         }
 
