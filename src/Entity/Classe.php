@@ -29,9 +29,14 @@ class Classe
      */
     private $user;
 
+    /**
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="Classe")
+     */
+    private $users;
+
     public function __construct()
     {
-        $this->eleves = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -54,5 +59,35 @@ class Classe
     public function __toString()
     {
         return $this->nom;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->setClasse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getClasse() === $this) {
+                $user->setClasse(null);
+            }
+        }
+
+        return $this;
     }
 }

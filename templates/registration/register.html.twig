@@ -1,33 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}Register{% endblock %}
 
 {% block body %}
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-    {% endfor %}
+        <div class="">
+            <h1>Register</h1>
 
-    <div class="container minVhTheme pt-5 ptNav text-center">
+            {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.prenom) }}
+                {{ form_row(registrationForm.nom) }}
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Password'
+                }) }}
+                {{ form_row(registrationForm.genre) }}
+                {{ form_row(registrationForm.Classe) }}
+                {{ form_row(registrationForm.Category) }}
+                {# {{ form_row(registrationForm.DateNaissance()) }} #}
+                {{ form_row(registrationForm.agreeTerms) }}
 
-        <div class="container m-auto text-center ">
-            <div class="m-3 testEt">
-                <h2>Enregistrez-vous</h2>
-                {{ form_start(InscriptionType) }}
-                {{ form_row(InscriptionType.email) }}
-                {{ form_row(InscriptionType.Prenom) }}
-                {{ form_row(InscriptionType.Nom) }}
-                {{ form_row(InscriptionType.genre) }}
-                {{ form_row(InscriptionType.date_naissance) }}
-                {{ form_row(InscriptionType.Category) }}
-                {{ form_row(InscriptionType.plainPassword) }}
-                {{ form_row(InscriptionType.agreeTerms) }}
-                <div class="invisible">
-                    {{ form_row(InscriptionType.roles) }}
-                </div>
-                <a class="btn bg-primary px-3 py-2 rounded text-white" href="{{ path('app_login') }}"><i class="fas fa-arrow-left"></i> Retour</a>
-                <button type="submit" class="btn bg-primary px-3 py-2 rounded text-white">S'enregistrer</button>
-            {{ form_end(InscriptionType) }}
-            </div>
+                <button type="submit" class="btn">Register</button>
+            {{ form_end(registrationForm) }}
         </div>
-    </div>
+    {% endfor %}
 {% endblock %}

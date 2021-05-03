@@ -51,6 +51,43 @@ class User implements UserInterface
      */
     private $isVerified = false;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $date_naissance;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nom;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $prenom;
+
+    /**
+     * @ORM\Column(type="string", length=5)
+     */
+    private $genre;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $archivee;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="users")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Classe::class, inversedBy="users")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Classe;
+
     public function __construct()
     {
         $this->evenement = new ArrayCollection();
@@ -175,6 +212,90 @@ class User implements UserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getDateNaissance(): ?\DateTimeInterface
+    {
+        return $this->date_naissance;
+    }
+
+    public function setDateNaissance(\DateTimeInterface $date_naissance): self
+    {
+        $this->date_naissance = $date_naissance;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): self
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getGenre(): ?string
+    {
+        return $this->genre;
+    }
+
+    public function setGenre(string $genre): self
+    {
+        $this->genre = $genre;
+
+        return $this;
+    }
+
+    public function getArchivee(): ?int
+    {
+        return $this->archivee;
+    }
+
+    public function setArchivee(int $archivee): self
+    {
+        $this->archivee = $archivee;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->Category;
+    }
+
+    public function setCategory(?Category $Category): self
+    {
+        $this->Category = $Category;
+
+        return $this;
+    }
+
+    public function getClasse(): ?Classe
+    {
+        return $this->Classe;
+    }
+
+    public function setClasse(?Classe $Classe): self
+    {
+        $this->Classe = $Classe;
 
         return $this;
     }
