@@ -25,13 +25,18 @@ class Classe
     private $nom;
 
     /**
-     * @ORM\OneToMany(targetEntity=Eleve::class, mappedBy="classe")
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="classe")
      */
-    private $eleves;
+    private $user;
+
+    /**
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="Classe")
+     */
+    private $users;
 
     public function __construct()
     {
-        $this->eleves = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -57,29 +62,29 @@ class Classe
     }
 
     /**
-     * @return Collection|Eleve[]
+     * @return Collection|User[]
      */
-    public function getEleves(): Collection
+    public function getUsers(): Collection
     {
-        return $this->eleves;
+        return $this->users;
     }
 
-    public function addElefe(Eleve $elefe): self
+    public function addUser(User $user): self
     {
-        if (!$this->eleves->contains($elefe)) {
-            $this->eleves[] = $elefe;
-            $elefe->setClasse($this);
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->setClasse($this);
         }
 
         return $this;
     }
 
-    public function removeElefe(Eleve $elefe): self
+    public function removeUser(User $user): self
     {
-        if ($this->eleves->removeElement($elefe)) {
+        if ($this->users->removeElement($user)) {
             // set the owning side to null (unless already changed)
-            if ($elefe->getClasse() === $this) {
-                $elefe->setClasse(null);
+            if ($user->getClasse() === $this) {
+                $user->setClasse(null);
             }
         }
 

@@ -2,9 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Eleve;
 use App\Entity\User;
-use App\Form\InscriptionType;
+use App\Form\RegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,13 +17,11 @@ class RegistrationController extends AbstractController
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
-        $eleve = new Eleve();
         $user = new User();
-        $form = $this->createForm(InscriptionType::class,[$user, $eleve]);
+        $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            dd($form);
             // encode the plain password
             $user->setPassword(
                 $passwordEncoder->encodePassword(
@@ -34,7 +31,7 @@ class RegistrationController extends AbstractController
             );
 
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user, $eleve);
+            $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
 
@@ -42,7 +39,7 @@ class RegistrationController extends AbstractController
         }
 
         return $this->render('registration/register.html.twig', [
-            'InscriptionType' => $form->createView(),
+            'registrationForm' => $form->createView(),
         ]);
     }
 }

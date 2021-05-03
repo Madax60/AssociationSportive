@@ -17,6 +17,8 @@ class ClasseFixtures extends Fixture
                 ->setNom('Classe '.$i);
             
                 $manager->persist($classe);
+                $this->addReference('Classe-'.$i, $classe);
+
         }
         $manager->flush();
     }

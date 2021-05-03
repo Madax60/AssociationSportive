@@ -30,14 +30,14 @@ class Category
     private $evenements;
 
     /**
-     * @ORM\OneToMany(targetEntity=Eleve::class, mappedBy="category")
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="Category")
      */
-    private $eleves;
+    private $users;
 
     public function __construct()
     {
         $this->evenements = new ArrayCollection();
-        $this->eleves = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -92,29 +92,29 @@ class Category
     }
 
     /**
-     * @return Collection|Eleve[]
+     * @return Collection|User[]
      */
-    public function getEleves(): Collection
+    public function getUsers(): Collection
     {
-        return $this->eleves;
+        return $this->users;
     }
 
-    public function addElefe(Eleve $elefe): self
+    public function addUser(User $user): self
     {
-        if (!$this->eleves->contains($elefe)) {
-            $this->eleves[] = $elefe;
-            $elefe->setCategory($this);
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->setCategory($this);
         }
 
         return $this;
     }
 
-    public function removeElefe(Eleve $elefe): self
+    public function removeUser(User $user): self
     {
-        if ($this->eleves->removeElement($elefe)) {
+        if ($this->users->removeElement($user)) {
             // set the owning side to null (unless already changed)
-            if ($elefe->getCategory() === $this) {
-                $elefe->setCategory(null);
+            if ($user->getCategory() === $this) {
+                $user->setCategory(null);
             }
         }
 
