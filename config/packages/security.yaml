@@ -1,4 +1,5 @@
 security:
+    enable_authenticator_manager: true
     encoders:
         App\Entity\User:
             algorithm: auto
@@ -15,7 +16,9 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: true
+            login_throttling:
+                max_attempts: 3
+            # anonymous: true
             lazy: true
             provider: app_user_provider
             guard:
@@ -24,7 +27,7 @@ security:
             logout:
                 path: app_logout
                 # where to redirect after logout
-                # target: app_any_route
+                target: app_login
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -38,11 +41,10 @@ security:
         #Lorsque l'url contient le mot admin il faut que
         #l'utilisateur ai le role admin
          - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/profile, roles: ROLE_USER }
 
     #je creer une hierarchie entre ses roles.
     #Lorque je suis editeur, j'hérite de user
     #Si je suis admin, j'hérite de éditeur
     role_hierarchy:
-        ROLE_EDITOR: ROLE_USER
-        ROLE_ADMIN: ROLE_EDITOR
+        ROLE_ADMIN: ROLE_USER

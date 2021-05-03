@@ -1,55 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Evenement index{% endblock %}
+{% block title %}Evènement{% endblock %}
 
 {% block body %}
-    <h1>Evenement index</h1>
+<div class="container minVhTheme mx-auto ptNav text-center">
 
-    <table class="table">
+    <h1 class="my-3 text-center mt-5">Liste des évènements</h1>
+
+    <div class="d-flex my-5">
+        <a class="btn bg-primary mr-auto rounded text-white" href="{{ path('evenement_new') }}">Ajouter un évènement</a>
+    </div>
+
+    <table class="table table-dark">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Sport_id</th>
-                <th>Type_id</th>
-                <th>Categorie_id</th>
-                <th>Nom</th>
-                <th>Description</th>
-                <th>Date_debut</th>
-                <th>Nombre_places</th>
-                <th>Image</th>
-                <th>Vignette</th>
-                <th>Duree</th>
-                <th>Date_fin</th>
-                <th>actions</th>
+            <tr class="d-flex text-center">
+                <th class="col">Nom</th>
+                <th class="col-8">Description</th>
+                <th class="col-2">Action</th>
             </tr>
         </thead>
         <tbody>
+        
         {% for evenement in evenements %}
-            <tr>
-                <td>{{ evenement.id }}</td>
-                <td>{{ evenement.SportId }}</td>
-                <td>{{ evenement.TypeId }}</td>
-                <td>{{ evenement.CategorieId }}</td>
-                <td>{{ evenement.nom }}</td>
-                <td>{{ evenement.description }}</td>
-                <td>{{ evenement.dateDebut ? evenement.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ evenement.nombrePlaces }}</td>
-                <td>{{ evenement.image }}</td>
-                <td>{{ evenement.vignette }}</td>
-                <td>{{ evenement.duree }}</td>
-                <td>{{ evenement.dateFin ? evenement.dateFin|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('evenement_show', {'id': evenement.id}) }}">Montrer</a>
-                    <a href="{{ path('evenement_edit', {'id': evenement.id}) }}">Modifier</a>
+            <tr class="d-flex text-center">
+                <td class="col">{{ evenement.nom }}</td>
+                <td class="col">{{ evenement.description }}</td>
+                <td class="col">{{ evenement.GetDateDebut|date("m/d/Y", "Europe/Paris") }}</td>
+                <td class="col">{{ evenement.GetNombrePlaces() }}</td>
+                <td class="col">{{ evenement.GetBrochureFilename() }}</td>
+                <td class="col">{{ evenement.GetVignette() }}</td>
+                <td class="col">{{ evenement.GetDuree() }}</td>
+                <td class="col">{{ evenement.GetDateFin|date("m/d/Y", "Europe/Paris") }}</td>
+                <td class="col-2">
+                    <a href="{{ path('evenement_show', {'id': evenement.id}) }}"><i style="font-size: 24px" class="fas fa-eye"></i></a>
+                    <a class="mx-2" href="{{ path('evenement_edit', {'id': evenement.id}) }}"><i style="font-size: 24px" class="fas fa-pencil-alt"></i></a>
+                    <form method="post" action="{{ path('evenement_delete', {id: evenement.id}) }}">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="fas fa-trash-alt"></button>
+                    </form>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="13">no records found</td>
+                <td colspan="13">Il n'y a aucun évènement</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('evenement_new') }}">Créer un évènement</a>
+</div>
 {% endblock %}
