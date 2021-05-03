@@ -72,11 +72,6 @@ class User implements UserInterface
     private $genre;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $archivee;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="users")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -260,18 +255,6 @@ class User implements UserInterface
     public function setGenre(string $genre): self
     {
         $this->genre = $genre;
-
-        return $this;
-    }
-
-    public function getArchivee(): ?int
-    {
-        return $this->archivee;
-    }
-
-    public function setArchivee(int $archivee): self
-    {
-        $this->archivee = $archivee;
 
         return $this;
     }

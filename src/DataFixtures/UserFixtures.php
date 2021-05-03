@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Category;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -18,7 +19,6 @@ final class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-
         $roles = [
             User::ROLE_USER,
             User::ROLE_ADMIN,
@@ -27,7 +27,15 @@ final class UserFixtures extends Fixture
         $password = '123';
         $userAdmin
             ->setEmail('user-A@gmail.com')
-            ->setRoles(array('ROLE_ADMIN'));
+            ->setRoles(array('ROLE_ADMIN'))
+            ->setNom('Admin')
+            ->setPrenom('Admin')
+            ->setGenre('Homme')
+            ->setDateNaissance(new \DateTime('12/05/1999'))
+            ->setArchivee(0)
+            ->setCategory($this->getReference('Categ-1'))
+            ->setClasse($this->getReference('Classe-1'));
+
 
             // Encode le mot de passe et l'insère dans le champ "password".
             $userAdmin->setPassword($this->encoder->encodePassword($userAdmin, $password));
@@ -37,7 +45,15 @@ final class UserFixtures extends Fixture
         $password = '123';
         $userUser
             ->setEmail('user-U@gmail.com')
-            ->setRoles(array('ROLE_USER'));
+            ->setRoles(array('ROLE_USER'))
+            ->setNom('User')
+            ->setPrenom('User')
+            ->setGenre('Femme')
+            ->setDateNaissance(new \DateTime('12/05/1998'))
+            ->setArchivee(0)
+            ->setCategory($this->getReference('Categ-1'))
+            ->setClasse($this->getReference('Classe-1'));
+
 
             // Encode le mot de passe et l'insère dans le champ "password".
             $userUser->setPassword($this->encoder->encodePassword($userUser, $password));
@@ -49,7 +65,15 @@ final class UserFixtures extends Fixture
 
             $user
                 ->setEmail('user-'.$i.'@gmail.com')
-                ->setRoles([$roles[rand(0,1)]]);
+                ->setRoles([$roles[rand(0,1)]])
+                ->setNom('User')
+                ->setPrenom('Random')
+                ->setGenre('Homme')
+                ->setDateNaissance(new \DateTime('12/05/1997'))
+                ->setArchivee(1)
+                ->setCategory($this->getReference('Categ-1'))
+                ->setClasse($this->getReference('Classe-1'));
+
 
             // Encode le mot de passe et l'insère dans le champ "password".
             $user->setPassword($this->encoder->encodePassword($user, $password));
