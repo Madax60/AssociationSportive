@@ -11,11 +11,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @UniqueEntity(fields={"email"}, message="Il y a déjà un compte existant à cet email.")
  */
 class User implements UserInterface
 {
-    const ROLE_EDITOR = "ROLE_EDITOR";
     const ROLE_USER = "ROLE_USER";
     const ROLE_ADMIN = "ROLE_ADMIN";
 
@@ -29,7 +28,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
-    private $email;
+    protected $email;
 
     /**
      * @ORM\Column(type="array")
@@ -40,7 +39,7 @@ class User implements UserInterface
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
-    private $password;
+    protected $password;
 
     /**
      * @ORM\ManyToMany(targetEntity=Evenement::class, mappedBy="User")
@@ -52,9 +51,42 @@ class User implements UserInterface
      */
     private $isVerified = false;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $date_naissance;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nom;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $prenom;
+
+    /**
+     * @ORM\Column(type="string", length=5)
+     */
+    private $genre;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="users")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Classe::class, inversedBy="users")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Classe;
+
     public function __construct()
     {
         $this->evenement = new ArrayCollection();
+        $this->eleve = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -178,4 +210,77 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function getDateNaissance(): ?\DateTimeInterface
+    {
+        return $this->date_naissance;
+    }
+
+    public function setDateNaissance(\DateTimeInterface $date_naissance): self
+    {
+        $this->date_naissance = $date_naissance;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): self
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getGenre(): ?string
+    {
+        return $this->genre;
+    }
+
+    public function setGenre(string $genre): self
+    {
+        $this->genre = $genre;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->Category;
+    }
+
+    public function setCategory(?Category $Category): self
+    {
+        $this->Category = $Category;
+
+        return $this;
+    }
+
+    public function getClasse(): ?Classe
+    {
+        return $this->Classe;
+    }
+
+    public function setClasse(?Classe $Classe): self
+    {
+        $this->Classe = $Classe;
+
+        return $this;
+    }
+
 }
