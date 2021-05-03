@@ -3,9 +3,9 @@
 {% block title %}Connexion{% endblock %}
 
 {% block body %}
-    <div class="container d-flex minVhTheme m-auto">
+    <div class="container d-flex minVhTheme m-auto pt-5">
         <div class="bg-theme-blue d-flex m-auto px-4 py-5 rounded-theme">
-            <div class="col-10 col-sm-6 d-flex mx-auto">
+            <div class="col-10 col-sm-6 d-flex mx-auto pt-5">
                 {% for message in app.flashes('success') %}
                     <div class="alert alert-success">
                         {{message}}
